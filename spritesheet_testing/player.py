@@ -48,10 +48,10 @@ class Player(pygame.sprite.Sprite):
 
     def set_state(self):
         """Change to the correct animation sequence based on motion of the character"""
-         self.state = 'idle'
-         if self.velocity > 0:
+        self.state = 'idle'
+        if self.velocity > 0:
             self.state = 'moving right'
-         elif self.velocity < 0:
+        elif self.velocity < 0:
             self.state = 'moving left' 
 
     def animate(self):
@@ -81,7 +81,7 @@ class Player(pygame.sprite.Sprite):
         self.rect.bottomleft = self.x_now, self.y_now
 
     def load_frames(self):
-    """load the frames from the spritesheets and create animations sequences for opposite direction"""  
+        """load the frames from the spritesheets and create animations sequences for opposite direction"""  
         my_spritesheet = Spritesheet(self.sname)
         self.idle_frames_right, self.walking_frames_right = my_spritesheet.get_frames()
         self.idle_frames_left = []
