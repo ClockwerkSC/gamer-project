@@ -15,8 +15,6 @@ class Player(pygame.sprite.Sprite):
             'bayleef': 'character_spritesheets/Bayleef Art.png',
             'meganium': 'character_spritesheets/Meganium Art.png',
             }
-
-
         self.sname = p_spritesheet[spritesheet_name.lower()]
         self.LEFT_KEY, self.RIGHT_KEY, self.FACING_LEFT = False, False, False
         self.load_frames()
@@ -30,10 +28,15 @@ class Player(pygame.sprite.Sprite):
 
 
     def draw(self, display):
+        """ Draw the characters current frame onto the window"""
         display.blit(self.current_image, self.rect)    
 
     def update(self):
-        self.velocity = 0  ####Code for User Controlled Poppy
+        """Change the velocity of the character based on user input.
+        The position of the character is updated, and the correct animation and frame
+        is selected.
+        """
+        self.velocity = 0 
         if self.LEFT_KEY and self.rect.left > 0:
             self.velocity = -2
         elif self.RIGHT_KEY and self.rect.right < 800:
@@ -44,6 +47,7 @@ class Player(pygame.sprite.Sprite):
         
 
     def set_state(self):
+        """Change to the correct animation sequence based on motion of the character"""
          self.state = 'idle'
          if self.velocity > 0:
             self.state = 'moving right'
@@ -51,6 +55,9 @@ class Player(pygame.sprite.Sprite):
             self.state = 'moving left' 
 
     def animate(self):
+        """Select the correct frame in the animation sequence based on the current state
+        of the character every specified amount of time in milliseconds
+        """
         now = pygame.time.get_ticks()
         if self.state == 'idle':
             if now - self.last_updated > 200:
@@ -73,7 +80,8 @@ class Player(pygame.sprite.Sprite):
         self.rect.bottom = 450
         self.rect.bottomleft = self.x_now, self.y_now
 
-    def load_frames(self):  
+    def load_frames(self):
+    """load the frames from the spritesheets and create animations sequences for opposite direction"""  
         my_spritesheet = Spritesheet(self.sname)
         self.idle_frames_right, self.walking_frames_right = my_spritesheet.get_frames()
         self.idle_frames_left = []
