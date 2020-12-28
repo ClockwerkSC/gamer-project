@@ -1,0 +1,63 @@
+{ "frames": {
+   "Meganium Art_0_Idle": {
+    "frame": { "x": 0, "y": 0, "w": 272, "h": 251 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 226, "y": 64, "w": 272, "h": 251 },
+    "sourceSize": { "w": 800, "h": 480 },
+    "duration": 100
+   },
+   "Meganium Art_1_Idle": {
+    "frame": { "x": 272, "y": 0, "w": 272, "h": 251 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 226, "y": 64, "w": 272, "h": 251 },
+    "sourceSize": { "w": 800, "h": 480 },
+    "duration": 100
+   },
+   "Meganium Art_2_walk": {
+    "frame": { "x": 0, "y": 0, "w": 272, "h": 251 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 226, "y": 64, "w": 272, "h": 251 },
+    "sourceSize": { "w": 800, "h": 480 },
+    "duration": 100
+   },
+   "Meganium Art_3_walk": {
+    "frame": { "x": 544, "y": 0, "w": 272, "h": 251 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 226, "y": 64, "w": 272, "h": 251 },
+    "sourceSize": { "w": 800, "h": 480 },
+    "duration": 100
+   },
+   "Meganium Art_4_walk": {
+    "frame": { "x": 0, "y": 251, "w": 272, "h": 251 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 226, "y": 64, "w": 272, "h": 251 },
+    "sourceSize": { "w": 800, "h": 480 },
+    "duration": 100
+   },
+   "Meganium Art_5_walk": {
+    "frame": { "x": 272, "y": 251, "w": 272, "h": 251 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 226, "y": 64, "w": 272, "h": 251 },
+    "sourceSize": { "w": 800, "h": 480 },
+    "duration": 100
+   }
+ },
+ "meta": {
+  "app": "http://www.aseprite.org/",
+  "version": "1.2.25-dev",
+  "image": "Meganium Art.png",
+  "format": "I8",
+  "size": { "w": 816, "h": 502 },
+  "scale": "1",
+  "frameTags": [
+   { "name": "Idle", "from": 0, "to": 1, "direction": "forward" },
+   { "name": "walk", "from": 2, "to": 5, "direction": "forward" }
+  ]
+ }
+}
