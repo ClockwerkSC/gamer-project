@@ -9,7 +9,7 @@ running = True
 clock = pygame.time.Clock()
 house = pygame.image.load('backgrounds/living room.png').convert()
 ################################# LOAD PLAYER ###################################
-poke = Player('chikorita')
+poke = Player('cyndaquil')
 ################################# GAME LOOP ##########################
 while running:
     clock.tick(60)
@@ -22,20 +22,36 @@ while running:
                 poke.LEFT_KEY, poke.FACING_LEFT = True, True
             elif event.key == pygame.K_RIGHT:
                 poke.RIGHT_KEY, poke.FACING_LEFT = True, False
+            elif event.key == pygame.K_SPACE:
+                poke.SPACE, poke.BACK = True, False
+            elif event.key == pygame.K_BACKSPACE:
+                poke.SPACE, poke.BACK = False, True 
+            elif event.key == pygame.K_q:
+                poke.Q = True 
+            elif event.key == pygame.K_z:
+                poke.Z = True 
         if event.type == pygame.KEYUP:
             if event.key == pygame.K_LEFT:
                 poke.LEFT_KEY = False
             elif event.key == pygame.K_RIGHT:
                 poke.RIGHT_KEY = False
-
+            elif event.key == pygame.K_SPACE:
+                poke.SPACE = False
+            elif event.key == pygame.K_BACKSPACE:
+                poke.BACK = False
+            elif event.key == pygame.K_q:
+                poke.Q = False
+            elif event.key == pygame.K_z:
+                poke.Z = False
+        
     ################################# UPDATE/ Animate SPRITE #################################
     poke.update()
     ################################# UPDATE WINDOW AND DISPLAY #################################
-    #canvas.fill((255,255,255))
     canvas.blit(house, (0,0))
     poke.draw(canvas)
     window.blit(canvas, (0,0))
     pygame.display.update()
+    
 
 
 
