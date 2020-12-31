@@ -1,0 +1,145 @@
+{ "frames": {
+   "Croconaw Art_0_Idle": {
+    "frame": { "x": 180, "y": 0, "w": 180, "h": 226 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 161, "y": 96, "w": 180, "h": 226 },
+    "sourceSize": { "w": 800, "h": 480 },
+    "duration": 100
+   },
+   "Croconaw Art_1_Idle": {
+    "frame": { "x": 0, "y": 0, "w": 180, "h": 233 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 161, "y": 89, "w": 180, "h": 233 },
+    "sourceSize": { "w": 800, "h": 480 },
+    "duration": 100
+   },
+   "Croconaw Art_2_walk": {
+    "frame": { "x": 180, "y": 0, "w": 180, "h": 226 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 161, "y": 96, "w": 180, "h": 226 },
+    "sourceSize": { "w": 800, "h": 480 },
+    "duration": 100
+   },
+   "Croconaw Art_3_walk": {
+    "frame": { "x": 360, "y": 0, "w": 180, "h": 226 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 161, "y": 96, "w": 180, "h": 226 },
+    "sourceSize": { "w": 800, "h": 480 },
+    "duration": 100
+   },
+   "Croconaw Art_4_walk": {
+    "frame": { "x": 180, "y": 226, "w": 180, "h": 226 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 161, "y": 96, "w": 180, "h": 226 },
+    "sourceSize": { "w": 800, "h": 480 },
+    "duration": 100
+   },
+   "Croconaw Art_5_Passive Kitchen": {
+    "frame": { "x": 360, "y": 364, "w": 156, "h": 134 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 243, "y": 180, "w": 156, "h": 134 },
+    "sourceSize": { "w": 800, "h": 480 },
+    "duration": 100
+   },
+   "Croconaw Art_6_Passive Kitchen": {
+    "frame": { "x": 360, "y": 226, "w": 156, "h": 138 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 243, "y": 176, "w": 156, "h": 138 },
+    "sourceSize": { "w": 800, "h": 480 },
+    "duration": 100
+   },
+   "Croconaw Art_7_Eating": {
+    "frame": { "x": 360, "y": 364, "w": 156, "h": 134 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 243, "y": 180, "w": 156, "h": 134 },
+    "sourceSize": { "w": 800, "h": 480 },
+    "duration": 100
+   },
+   "Croconaw Art_8_Eating": {
+    "frame": { "x": 0, "y": 233, "w": 157, "h": 134 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 243, "y": 180, "w": 157, "h": 134 },
+    "sourceSize": { "w": 800, "h": 480 },
+    "duration": 100
+   },
+   "Croconaw Art_9_Eating": {
+    "frame": { "x": 0, "y": 367, "w": 156, "h": 134 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 243, "y": 180, "w": 156, "h": 134 },
+    "sourceSize": { "w": 800, "h": 480 },
+    "duration": 100
+   },
+   "Croconaw Art_10_Eating": {
+    "frame": { "x": 360, "y": 364, "w": 156, "h": 134 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 243, "y": 180, "w": 156, "h": 134 },
+    "sourceSize": { "w": 800, "h": 480 },
+    "duration": 100
+   },
+   "Croconaw Art_11_Eating": {
+    "frame": { "x": 0, "y": 233, "w": 157, "h": 134 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 243, "y": 180, "w": 157, "h": 134 },
+    "sourceSize": { "w": 800, "h": 480 },
+    "duration": 100
+   },
+   "Croconaw Art_12_Eating": {
+    "frame": { "x": 0, "y": 367, "w": 156, "h": 134 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 243, "y": 180, "w": 156, "h": 134 },
+    "sourceSize": { "w": 800, "h": 480 },
+    "duration": 100
+   },
+   "Croconaw Art_13_Eating": {
+    "frame": { "x": 360, "y": 364, "w": 156, "h": 134 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 243, "y": 180, "w": 156, "h": 134 },
+    "sourceSize": { "w": 800, "h": 480 },
+    "duration": 100
+   },
+   "Croconaw Art_14_Eating": {
+    "frame": { "x": 0, "y": 233, "w": 157, "h": 134 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 243, "y": 180, "w": 157, "h": 134 },
+    "sourceSize": { "w": 800, "h": 480 },
+    "duration": 100
+   },
+   "Croconaw Art_15_Eating": {
+    "frame": { "x": 0, "y": 367, "w": 156, "h": 134 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 243, "y": 180, "w": 156, "h": 134 },
+    "sourceSize": { "w": 800, "h": 480 },
+    "duration": 100
+   }
+ },
+ "meta": {
+  "app": "http://www.aseprite.org/",
+  "version": "1.2.25-dev",
+  "image": "Croconaw Art.png",
+  "format": "I8",
+  "size": { "w": 540, "h": 501 },
+  "scale": "1",
+  "frameTags": [
+   { "name": "Idle", "from": 0, "to": 1, "direction": "forward" },
+   { "name": "walk", "from": 2, "to": 4, "direction": "forward" },
+   { "name": "Passive Kitchen", "from": 5, "to": 6, "direction": "forward" },
+   { "name": "Eating", "from": 7, "to": 15, "direction": "forward" }
+  ]
+ }
+}
