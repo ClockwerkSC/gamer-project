@@ -26,8 +26,8 @@ class Player(pygame.sprite.Sprite):
         self.state = 'idle'
         self.current_image = self.idle_frames_left[0]
         self.experience = 0
+        self.xp_max = 200
         self.level = 0
-        self.font_name = "Pokemon Classic.TTF"
         self.name = "George"
         self.happiness = 200
         self.happiness_max = 200
@@ -37,27 +37,10 @@ class Player(pygame.sprite.Sprite):
         self.last_updated_hunger_time = 0
         self.ai_duration = 0
 
-        #Setting geometries for the HUD
-        self.HUD_width = 450
-        self.xp_barwidth = 100
-        self.xp_levelwidth = 0
-        self.happiness_levelwidth = self.xp_barwidth
-        self.hunger_levelwidth = self.xp_barwidth
-        self.xp_bar_max = 200
-        self.xp_bar_x_offset = (self.HUD_width / (3) * 1) - self.xp_barwidth * 1.25
-        self.xp_bar_y_offset = 30
-        self.happy_bar_x_offset = (self.HUD_width / (3) * 2) - self.xp_barwidth * 1.25
-        self.hunger_bar_x_offset = (self.HUD_width / (3) * 3) - self.xp_barwidth * 1.25
-        self.status_text_y_offset = self.xp_bar_y_offset - 16
-        self.HUD_background = pygame.image.load('HUD.png').convert_alpha()
-        self.happiness_color = pygame.Color('#33FF41')
-        self.hunger_color = pygame.Color('#33FF41')
-
     def draw(self, display):
-        """ Draw the characters current frame and HUD onto the window"""
+        """ Draw the characters current frame onto the window"""
         display.blit(self.current_image, self.rect) 
-        self.hud_update(display) 
-        
+         
     def update(self):
         """Change the velocity of the character based on user input.
         The position of the character is updated, and the character attributes are updated.
@@ -138,9 +121,9 @@ class Player(pygame.sprite.Sprite):
     def increase_xp(self):
         """Increase the XP bar: currently increased when space bar is hit"""
         if self.SPACE:
-            if self.experience < self.xp_bar_max:
+            if self.experience < self.xp_max:
                 self.experience += 1
-            elif self.experience >= self.xp_bar_max:
+            elif self.experience >= self.xp_max:
                 self.experience = 0
                 self.level += 1
 
@@ -171,51 +154,7 @@ class Player(pygame.sprite.Sprite):
             if self.hunger > self.hunger_max:
                 self.hunger = self.hunger_max
 
-    def draw_text(self, display, text, size, x, y, mode):
-        """Create text surface and blit onto another display surface.
-        There is an option to scpecifiy the location by center or topleft corner
-        """
-        font = pygame.font.Font(self.font_name, size)
-        text_surface = font.render(text, True, (0,0,0))
-        text_rect = text_surface.get_rect()
-        if mode == "left":
-            text_rect.topleft = (x,y)
-        elif mode == "center":
-            text_rect.center = (x, y)
-        display.blit(text_surface, text_rect)
-
-    def hud_update(self, display):
-        """draw and blit all objects necessary to create the HUD""" 
-        display.blit(self.HUD_background, (0,0)) 
-
-        # Level section of HUD
-        self.xp_levelwidth = self.experience * self.xp_barwidth / self.xp_bar_max
-        self.xp_level = pygame.draw.rect(display, (0,222,255), (self.xp_bar_x_offset,self.xp_bar_y_offset,self.xp_levelwidth,10)) 
-        self.level_text = self.draw_text(display, "Lv", 10 , self.xp_bar_x_offset, self.status_text_y_offset, "left")
-        self.level_number = self.draw_text(display, str(self.level), 12, self.xp_bar_x_offset + 20, self.status_text_y_offset - 3, "left")
-
-        # Happiness section of HUD
-        if self.happiness > .5 * self.happiness_max:
-            self.happiness_color = pygame.Color('#33FF41')
-        elif self.happiness < .5 * self.happiness_max and self.happiness > .2 * self.happiness_max:
-            self.happiness_color = pygame.Color("#F6FF33")
-        elif self.happiness < .2 * self.happiness_max:
-             self.happiness_color = pygame.Color("#FF3C33")
-        self.happiness_levelwidth = self.happiness * self.xp_barwidth / self.happiness_max
-        self.happy_level = pygame.draw.rect(display, self.happiness_color, (self.happy_bar_x_offset,self.xp_bar_y_offset,self.happiness_levelwidth,10))
-        self.happy_text = self.draw_text(display, "Happiness", 10 , self.happy_bar_x_offset, self.status_text_y_offset, "left")
-        
-        # Hunger Section of HUD
-        if self.hunger > .5 * self.hunger_max:
-            self.hunger_color = pygame.Color('#33FF41')
-        elif self.hunger < .5 * self.hunger_max and self.hunger > .2 * self.hunger_max:
-            self.hunger_color = pygame.Color("#F6FF33")
-        elif self.hunger < .2 * self.hunger_max:
-             self.hunger_color = pygame.Color("#FF3C33")
-        self.hunger_levelwidth = self.hunger * self.xp_barwidth / self.hunger_max
-        self.hunger_level = pygame.draw.rect(display, self.hunger_color, (self.hunger_bar_x_offset,self.xp_bar_y_offset,self.hunger_levelwidth,10))
-        self.hunger_text = self.draw_text(display, "Hunger", 10 , self.hunger_bar_x_offset, self.status_text_y_offset, "left")
-        self.name_text = self.draw_text(display, self.name, 10, self.xp_bar_x_offset, self.status_text_y_offset - 15, "left")
+    
 
 
 

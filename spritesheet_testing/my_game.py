@@ -1,5 +1,6 @@
 import pygame
 from player import Player
+from hud import Hud
 ################################# LOAD UP A BASIC WINDOW AND CLOCK #################################
 pygame.init()
 DISPLAY_W, DISPLAY_H = 800, 480
@@ -10,6 +11,7 @@ clock = pygame.time.Clock()
 house = pygame.image.load('backgrounds/living room.png').convert()
 ################################# LOAD PLAYER ###################################
 poke = Player('cyndaquil')
+hud = Hud()
 ################################# GAME LOOP ##########################
 while running:
     clock.tick(60)
@@ -43,14 +45,16 @@ while running:
                 poke.Q = False
             elif event.key == pygame.K_z:
                 poke.Z = False
-        
+
     ################################# UPDATE/ Animate SPRITE #################################
     poke.update()
     ################################# UPDATE WINDOW AND DISPLAY #################################
     canvas.blit(house, (0,0))
     poke.draw(canvas)
+    hud.hud_update(canvas, poke)
     window.blit(canvas, (0,0))
     pygame.display.update()
+
     
 
 
