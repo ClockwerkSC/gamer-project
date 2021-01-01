@@ -9,6 +9,7 @@ class Menu():
 
 
     def check_events(self):
+        """ Check for key presses and set appropriate flags"""
         for event in pygame.event.get():
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_ESCAPE:
@@ -25,6 +26,7 @@ class Menu():
 class MainMenu(Menu):
     def __init__(self):
         Menu.__init__(self)
+        self.font_name = "Pokemon Classic.TTF"
         self.icons = ['Eat', 'play', 'bathroom']
         self.eatx, self.eaty = 660, 10
         self.playx, self.playy = 660, 30
@@ -34,7 +36,7 @@ class MainMenu(Menu):
             'play': (self.playx, self.playy),
             'bathroom':(self.bathroomx, self.bathroomy)}
 
-    def draw_text(self, display, text, size, (x,y), mode):
+    def draw_text(self, display, text, size, x, y , mode):
         """Create text surface and blit onto another display surface.
         There is an option to scpecifiy the location by center or topleft corner
         """
@@ -44,10 +46,11 @@ class MainMenu(Menu):
         if mode == "left":
             text_rect.topleft = (x,y)
         elif mode == "center":
-            text_rect.center = (x, y)
+            text_rect.center = (x,y)
         display.blit(text_surface, text_rect)
 
     def display_menu(self, display):
+        """Display main menu"""
         display.blit(self.menu_background, (650,0))
         for icon in self.icons:
             self.draw_text(display, icon, 10, *self.pos_dict[icon], "left")
