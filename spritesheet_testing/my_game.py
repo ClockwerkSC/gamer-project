@@ -1,6 +1,7 @@
 import pygame
 from player import Player
 from hud import Hud
+from menu import *
 ################################# LOAD UP A BASIC WINDOW AND CLOCK #################################
 pygame.init()
 DISPLAY_W, DISPLAY_H = 800, 480
@@ -13,6 +14,10 @@ house = pygame.image.load('backgrounds/living room.png').convert()
 poke = Player('cyndaquil')
 hud = Hud()
 ################################# GAME LOOP ##########################
+
+ESCAPE = False
+Test_menu = MainMenu()
+
 while running:
     clock.tick(60)
     ################################# CHECK PLAYER INPUT #################################
@@ -32,6 +37,8 @@ while running:
                 poke.Q = True 
             elif event.key == pygame.K_z:
                 poke.Z = True 
+            elif event.key == pygame.K_ESCAPE:
+                ESCAPE = True
         if event.type == pygame.KEYUP:
             if event.key == pygame.K_LEFT:
                 poke.LEFT_KEY = False
@@ -45,6 +52,9 @@ while running:
                 poke.Q = False
             elif event.key == pygame.K_z:
                 poke.Z = False
+            elif event.key == pygame.K_ESCAPE:
+                ESCAPE = False
+                Test_menu.menu_running = True
 
     ################################# UPDATE/ Animate SPRITE #################################
     poke.update()
@@ -55,7 +65,14 @@ while running:
     window.blit(canvas, (0,0))
     pygame.display.update()
 
-    
+
+    if ESCAPE:
+        while Test_menu.menu_running:
+            Test_menu.display_menu(canvas)
+            Test_menu.check_events()
+            window.blit(canvas, (0,0))
+            pygame.display.update()
+
 
 
 
