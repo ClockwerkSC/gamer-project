@@ -42,6 +42,10 @@ class Menu():
 
     def draw_cursor(self, display):
         self.draw_text(display, '>', 10, self.pos_dict[self.current_key][0] - 10, self.pos_dict[self.current_key][1], "left")
+        print(self.i)
+
+    def reset_keys(self):
+        self.UP_KEY, self.DOWN_KEY = False, False  
 
 class MainMenu(Menu):
     def __init__(self):
@@ -57,6 +61,7 @@ class MainMenu(Menu):
         self.minix, self.miniy = 660, 130
         self.state = 'EAT'
         self.current_key = self.icons[0]
+        self.i = 0
 
         self.pos_dict = {'EAT': (self.eatx, self.eaty),
             'PLAY': (self.playx, self.playy),
@@ -87,22 +92,23 @@ class MainMenu(Menu):
         self.move_cursor(display)
         self.draw_cursor(display)
     def move_cursor(self, display):
-        i = 0
+        
         if self.DOWN_KEY:
-            i = i + 1
-            if i >= 5:
-                i = 0
-            self.current_key = self.icons[i]
+            self.i = self.i + 1
+            if self.i > 6:
+                self.i = 0
+            self.current_key = self.icons[self.i]
         self.DOWN_KEY = False
         if self.UP_KEY:
-            i = i-1
-            if i == 0:
-                i = 5
-            self.current_key = self.icons[i]
+            self.i = self.i-1
+            if self.i < 0:
+                self.i = 6
+            self.current_key = self.icons[self.i]
 
-
+    
     #def make_selection(self):
-            
+    
+
 
 
 

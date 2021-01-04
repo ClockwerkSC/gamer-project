@@ -68,10 +68,12 @@ while running:
 
     if ESCAPE:
         while Test_menu.menu_running:
-            Test_menu.display_menu(canvas)
             Test_menu.check_events()
+            Test_menu.display_menu(canvas)
+            Test_menu.reset_keys()
             window.blit(canvas, (0,0))
             pygame.display.update()
+
 
 
 
