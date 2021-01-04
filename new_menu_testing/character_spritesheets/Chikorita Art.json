@@ -1,0 +1,63 @@
+{ "frames": {
+   "Chikorita Art_0_Idle": {
+    "frame": { "x": 0, "y": 0, "w": 154, "h": 127 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 273, "y": 178, "w": 154, "h": 127 },
+    "sourceSize": { "w": 800, "h": 480 },
+    "duration": 100
+   },
+   "Chikorita Art_1_Idle": {
+    "frame": { "x": 154, "y": 0, "w": 154, "h": 127 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 273, "y": 178, "w": 154, "h": 127 },
+    "sourceSize": { "w": 800, "h": 480 },
+    "duration": 100
+   },
+   "Chikorita Art_2_walk": {
+    "frame": { "x": 0, "y": 0, "w": 154, "h": 127 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 273, "y": 178, "w": 154, "h": 127 },
+    "sourceSize": { "w": 800, "h": 480 },
+    "duration": 175
+   },
+   "Chikorita Art_3_walk": {
+    "frame": { "x": 308, "y": 0, "w": 154, "h": 127 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 273, "y": 178, "w": 154, "h": 127 },
+    "sourceSize": { "w": 800, "h": 480 },
+    "duration": 175
+   },
+   "Chikorita Art_4_walk": {
+    "frame": { "x": 0, "y": 127, "w": 154, "h": 127 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 273, "y": 178, "w": 154, "h": 127 },
+    "sourceSize": { "w": 800, "h": 480 },
+    "duration": 175
+   },
+   "Chikorita Art_5_walk": {
+    "frame": { "x": 154, "y": 127, "w": 154, "h": 127 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 273, "y": 178, "w": 154, "h": 127 },
+    "sourceSize": { "w": 800, "h": 480 },
+    "duration": 175
+   }
+ },
+ "meta": {
+  "app": "http://www.aseprite.org/",
+  "version": "1.2.25-dev",
+  "image": "Chikorita Art.png",
+  "format": "I8",
+  "size": { "w": 462, "h": 254 },
+  "scale": "1",
+  "frameTags": [
+   { "name": "Idle", "from": 0, "to": 1, "direction": "forward" },
+   { "name": "walk", "from": 2, "to": 5, "direction": "forward" }
+  ]
+ }
+}
