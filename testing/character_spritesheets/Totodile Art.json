@@ -1,0 +1,153 @@
+{ "frames": {
+   "Totodile Art_0_Idle": {
+    "frame": { "x": 151, "y": 0, "w": 151, "h": 175 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 224, "y": 170, "w": 151, "h": 175 },
+    "sourceSize": { "w": 800, "h": 480 },
+    "duration": 100
+   },
+   "Totodile Art_1_Idle": {
+    "frame": { "x": 0, "y": 0, "w": 151, "h": 181 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 224, "y": 164, "w": 151, "h": 181 },
+    "sourceSize": { "w": 800, "h": 480 },
+    "duration": 100
+   },
+   "Totodile Art_2_walk": {
+    "frame": { "x": 151, "y": 0, "w": 151, "h": 175 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 224, "y": 170, "w": 151, "h": 175 },
+    "sourceSize": { "w": 800, "h": 480 },
+    "duration": 100
+   },
+   "Totodile Art_3_walk": {
+    "frame": { "x": 302, "y": 0, "w": 151, "h": 175 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 224, "y": 170, "w": 151, "h": 175 },
+    "sourceSize": { "w": 800, "h": 480 },
+    "duration": 100
+   },
+   "Totodile Art_4_walk": {
+    "frame": { "x": 302, "y": 175, "w": 151, "h": 174 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 224, "y": 170, "w": 151, "h": 174 },
+    "sourceSize": { "w": 800, "h": 480 },
+    "duration": 100
+   },
+   "Totodile Art_5_walk": {
+    "frame": { "x": 151, "y": 175, "w": 151, "h": 175 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 224, "y": 170, "w": 151, "h": 175 },
+    "sourceSize": { "w": 800, "h": 480 },
+    "duration": 100
+   },
+   "Totodile Art_6_passive kitchen": {
+    "frame": { "x": 0, "y": 268, "w": 130, "h": 82 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 268, "y": 232, "w": 130, "h": 82 },
+    "sourceSize": { "w": 800, "h": 480 },
+    "duration": 100
+   },
+   "Totodile Art_7_passive kitchen": {
+    "frame": { "x": 0, "y": 181, "w": 130, "h": 87 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 268, "y": 227, "w": 130, "h": 87 },
+    "sourceSize": { "w": 800, "h": 480 },
+    "duration": 100
+   },
+   "Totodile Art_8_eating": {
+    "frame": { "x": 0, "y": 268, "w": 130, "h": 82 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 268, "y": 232, "w": 130, "h": 82 },
+    "sourceSize": { "w": 800, "h": 480 },
+    "duration": 300
+   },
+   "Totodile Art_9_eating": {
+    "frame": { "x": 0, "y": 268, "w": 130, "h": 82 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 268, "y": 232, "w": 130, "h": 82 },
+    "sourceSize": { "w": 800, "h": 480 },
+    "duration": 300
+   },
+   "Totodile Art_10_eating": {
+    "frame": { "x": 0, "y": 268, "w": 130, "h": 82 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 268, "y": 232, "w": 130, "h": 82 },
+    "sourceSize": { "w": 800, "h": 480 },
+    "duration": 300
+   },
+   "Totodile Art_11_eating": {
+    "frame": { "x": 0, "y": 268, "w": 130, "h": 82 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 268, "y": 232, "w": 130, "h": 82 },
+    "sourceSize": { "w": 800, "h": 480 },
+    "duration": 300
+   },
+   "Totodile Art_12_eating": {
+    "frame": { "x": 0, "y": 268, "w": 130, "h": 82 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 268, "y": 232, "w": 130, "h": 82 },
+    "sourceSize": { "w": 800, "h": 480 },
+    "duration": 300
+   },
+   "Totodile Art_13_eating": {
+    "frame": { "x": 0, "y": 268, "w": 130, "h": 82 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 268, "y": 232, "w": 130, "h": 82 },
+    "sourceSize": { "w": 800, "h": 480 },
+    "duration": 300
+   },
+   "Totodile Art_14_eating": {
+    "frame": { "x": 0, "y": 268, "w": 130, "h": 82 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 268, "y": 232, "w": 130, "h": 82 },
+    "sourceSize": { "w": 800, "h": 480 },
+    "duration": 300
+   },
+   "Totodile Art_15_eating": {
+    "frame": { "x": 0, "y": 268, "w": 130, "h": 82 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 268, "y": 232, "w": 130, "h": 82 },
+    "sourceSize": { "w": 800, "h": 480 },
+    "duration": 300
+   },
+   "Totodile Art_16_eating": {
+    "frame": { "x": 0, "y": 268, "w": 130, "h": 82 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 268, "y": 232, "w": 130, "h": 82 },
+    "sourceSize": { "w": 800, "h": 480 },
+    "duration": 300
+   }
+ },
+ "meta": {
+  "app": "http://www.aseprite.org/",
+  "version": "1.2.25-dev",
+  "image": "Totodile Art.png",
+  "format": "I8",
+  "size": { "w": 453, "h": 350 },
+  "scale": "1",
+  "frameTags": [
+   { "name": "Idle", "from": 0, "to": 1, "direction": "forward" },
+   { "name": "walk", "from": 2, "to": 5, "direction": "forward" },
+   { "name": "passive kitchen", "from": 6, "to": 7, "direction": "forward" },
+   { "name": "eating", "from": 8, "to": 16, "direction": "forward" }
+  ]
+ }
+}
