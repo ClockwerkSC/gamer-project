@@ -73,11 +73,12 @@ class Idle(Game):
 
 			if self.ESCAPE:
 				while self.curr_menu.menu_running:
-					self.curr_menu.display_menu(self.canvas)
 					self.curr_menu.check_events()
-					self.curr_menu.reset_keys()
-					pygame.display.update()
+					self.curr_menu.display_menu(self.canvas)
 					self.window.blit(self.canvas, (0,0))
+					pygame.display.update()
+					self.curr_menu.reset_keys()
+					
 
 
 
