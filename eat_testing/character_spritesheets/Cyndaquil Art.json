@@ -1,0 +1,63 @@
+{ "frames": {
+   "Cyndaquil Art_0_Idle": {
+    "frame": { "x": 111, "y": 0, "w": 111, "h": 91 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 341, "y": 193, "w": 111, "h": 91 },
+    "sourceSize": { "w": 800, "h": 480 },
+    "duration": 250
+   },
+   "Cyndaquil Art_1_Idle": {
+    "frame": { "x": 0, "y": 0, "w": 111, "h": 95 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 341, "y": 189, "w": 111, "h": 95 },
+    "sourceSize": { "w": 800, "h": 480 },
+    "duration": 250
+   },
+   "Cyndaquil Art_2_walk": {
+    "frame": { "x": 111, "y": 0, "w": 111, "h": 91 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 341, "y": 193, "w": 111, "h": 91 },
+    "sourceSize": { "w": 800, "h": 480 },
+    "duration": 150
+   },
+   "Cyndaquil Art_3_walk": {
+    "frame": { "x": 222, "y": 0, "w": 111, "h": 91 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 341, "y": 193, "w": 111, "h": 91 },
+    "sourceSize": { "w": 800, "h": 480 },
+    "duration": 150
+   },
+   "Cyndaquil Art_4_walk": {
+    "frame": { "x": 111, "y": 91, "w": 111, "h": 90 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 341, "y": 193, "w": 111, "h": 90 },
+    "sourceSize": { "w": 800, "h": 480 },
+    "duration": 150
+   },
+   "Cyndaquil Art_5_walk": {
+    "frame": { "x": 222, "y": 91, "w": 111, "h": 90 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 341, "y": 193, "w": 111, "h": 90 },
+    "sourceSize": { "w": 800, "h": 480 },
+    "duration": 150
+   }
+ },
+ "meta": {
+  "app": "http://www.aseprite.org/",
+  "version": "1.2.25-dev",
+  "image": "Cyndaquil Art.png",
+  "format": "I8",
+  "size": { "w": 333, "h": 181 },
+  "scale": "1",
+  "frameTags": [
+   { "name": "Idle", "from": 0, "to": 1, "direction": "forward" },
+   { "name": "walk", "from": 2, "to": 5, "direction": "forward" }
+  ]
+ }
+}

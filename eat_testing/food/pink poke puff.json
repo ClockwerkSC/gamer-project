@@ -1,0 +1,86 @@
+{ "frames": {
+   "food pink poke puff_0_food": {
+    "frame": { "x": 0, "y": 0, "w": 62, "h": 49 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 387, "y": 265, "w": 62, "h": 49 },
+    "sourceSize": { "w": 800, "h": 480 },
+    "duration": 300
+   },
+   "food pink poke puff_1_food": {
+    "frame": { "x": 62, "y": 0, "w": 62, "h": 49 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 387, "y": 265, "w": 62, "h": 49 },
+    "sourceSize": { "w": 800, "h": 480 },
+    "duration": 300
+   },
+   "food pink poke puff_2_food": {
+    "frame": { "x": 124, "y": 0, "w": 62, "h": 49 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 387, "y": 265, "w": 62, "h": 49 },
+    "sourceSize": { "w": 800, "h": 480 },
+    "duration": 300
+   },
+   "food pink poke puff_3_food": {
+    "frame": { "x": 0, "y": 49, "w": 62, "h": 49 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 387, "y": 265, "w": 62, "h": 49 },
+    "sourceSize": { "w": 800, "h": 480 },
+    "duration": 300
+   },
+   "food pink poke puff_4_food": {
+    "frame": { "x": 62, "y": 49, "w": 62, "h": 49 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 387, "y": 265, "w": 62, "h": 49 },
+    "sourceSize": { "w": 800, "h": 480 },
+    "duration": 300
+   },
+   "food pink poke puff_5_food": {
+    "frame": { "x": 124, "y": 49, "w": 62, "h": 49 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 387, "y": 265, "w": 62, "h": 49 },
+    "sourceSize": { "w": 800, "h": 480 },
+    "duration": 300
+   },
+   "food pink poke puff_6_food": {
+    "frame": { "x": 0, "y": 98, "w": 62, "h": 49 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 387, "y": 265, "w": 62, "h": 49 },
+    "sourceSize": { "w": 800, "h": 480 },
+    "duration": 300
+   },
+   "food pink poke puff_7_food": {
+    "frame": { "x": 62, "y": 98, "w": 62, "h": 49 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 387, "y": 265, "w": 62, "h": 49 },
+    "sourceSize": { "w": 800, "h": 480 },
+    "duration": 300
+   },
+   "food pink poke puff_8_food": {
+    "frame": { "x": 124, "y": 98, "w": 62, "h": 49 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 387, "y": 265, "w": 62, "h": 49 },
+    "sourceSize": { "w": 800, "h": 480 },
+    "duration": 300
+   }
+ },
+ "meta": {
+  "app": "http://www.aseprite.org/",
+  "version": "1.2.25-dev",
+  "image": "food pink poke puff.png",
+  "format": "I8",
+  "size": { "w": 186, "h": 147 },
+  "scale": "1",
+  "frameTags": [
+   { "name": "food", "from": 0, "to": 8, "direction": "forward" }
+  ]
+ }
+}

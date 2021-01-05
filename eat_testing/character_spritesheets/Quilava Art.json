@@ -1,0 +1,63 @@
+{ "frames": {
+   "Quilava Art_0_Idle": {
+    "frame": { "x": 0, "y": 0, "w": 203, "h": 105 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 339, "y": 185, "w": 203, "h": 105 },
+    "sourceSize": { "w": 800, "h": 480 },
+    "duration": 100
+   },
+   "Quilava Art_1_Idle": {
+    "frame": { "x": 203, "y": 0, "w": 203, "h": 105 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 339, "y": 185, "w": 203, "h": 105 },
+    "sourceSize": { "w": 800, "h": 480 },
+    "duration": 100
+   },
+   "Quilava Art_2_walk": {
+    "frame": { "x": 0, "y": 0, "w": 203, "h": 105 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 339, "y": 185, "w": 203, "h": 105 },
+    "sourceSize": { "w": 800, "h": 480 },
+    "duration": 100
+   },
+   "Quilava Art_3_walk": {
+    "frame": { "x": 406, "y": 0, "w": 203, "h": 105 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 339, "y": 185, "w": 203, "h": 105 },
+    "sourceSize": { "w": 800, "h": 480 },
+    "duration": 100
+   },
+   "Quilava Art_4_walk": {
+    "frame": { "x": 0, "y": 105, "w": 203, "h": 105 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 339, "y": 185, "w": 203, "h": 105 },
+    "sourceSize": { "w": 800, "h": 480 },
+    "duration": 100
+   },
+   "Quilava Art_5_walk": {
+    "frame": { "x": 203, "y": 105, "w": 203, "h": 105 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 339, "y": 185, "w": 203, "h": 105 },
+    "sourceSize": { "w": 800, "h": 480 },
+    "duration": 100
+   }
+ },
+ "meta": {
+  "app": "http://www.aseprite.org/",
+  "version": "1.2.25-dev",
+  "image": "Quilava Art.png",
+  "format": "I8",
+  "size": { "w": 609, "h": 210 },
+  "scale": "1",
+  "frameTags": [
+   { "name": "Idle", "from": 0, "to": 1, "direction": "forward" },
+   { "name": "walk", "from": 2, "to": 5, "direction": "forward" }
+  ]
+ }
+}
