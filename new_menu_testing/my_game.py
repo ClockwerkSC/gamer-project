@@ -14,9 +14,13 @@ house = pygame.image.load('backgrounds/living room.png').convert()
 poke = Player('cyndaquil')
 hud = Hud()
 ################################# GAME LOOP ##########################
-
 ESCAPE = False
-Test_menu = MainMenu()
+
+menu_dict = {'MAIN': MainMenu(),
+            'EAT': EatMenu()}
+main = menu_dict['MAIN']            
+curr_menu = menu_dict[main.state]
+
 
 while running:
     clock.tick(60)
@@ -54,7 +58,7 @@ while running:
                 poke.Z = False
             elif event.key == pygame.K_ESCAPE:
                 ESCAPE = False
-                Test_menu.menu_running = True
+                curr_menu.menu_running = True
 
     ################################# UPDATE/ Animate SPRITE #################################
     poke.update()
@@ -67,10 +71,10 @@ while running:
 
 
     if ESCAPE:
-        while Test_menu.menu_running:
-            Test_menu.check_events()
-            Test_menu.display_menu(canvas)
-            Test_menu.reset_keys()
+        while curr_menu.menu_running:
+            curr_menu.check_events()
+            curr_menu.display_menu(canvas)
+            curr_menu.reset_keys()
             window.blit(canvas, (0,0))
             pygame.display.update()
 

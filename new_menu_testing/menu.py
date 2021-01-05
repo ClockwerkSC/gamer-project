@@ -6,6 +6,7 @@ class Menu():
         self.menu_background = pygame.image.load('backgrounds/menu background.png').convert_alpha()
         self.menu_running = True
         self.START_KEY, self.BACK_KEY, self.UP_KEY, self.DOWN_KEY = False, False, False, False
+        self.state = 'MAIN'
 
 
     def check_events(self):
@@ -59,7 +60,7 @@ class MainMenu(Menu):
         self.townx, self.towny = 660, 90
         self.choosepokex, self.choosepokey = 660, 110
         self.minix, self.miniy = 660, 130
-        self.state = 'EAT'
+        #self.state = 'EAT'
         self.current_key = self.icons[0]
         self.i = 0
 
@@ -104,10 +105,57 @@ class MainMenu(Menu):
             if self.i < 0:
                 self.i = 6
             self.current_key = self.icons[self.i]
+        if self.START_KEY == True:
+            self.state = self.icons[self.i]
 
-    
-    #def make_selection(self):
-    
+
+class EatMenu(Menu):
+    def __init__(self):
+        Menu.__init__(self)
+        self.font_name = "Pokemon Classic.TTF"
+        self.icons = ['SNACK', 'MEAL']
+        #self.state = 'SNACK'
+        self.current_key = self.icons[0]
+        self.i = 0
+        self.snackx, self.snacky = 660, 10
+        self.mealx, self.mealy = 660, 30
+
+        self.pos_dict = {'SNACK': (self.snackx, self.mealy),
+            'MEAL': (self.mealx, self.mealy)}
+
+    def draw_text(self, display, text, size, x, y , mode):
+        """Create text surface and blit onto another display surface.
+        There is an option to scpecifiy the location by center or topleft corner
+        """
+        font = pygame.font.Font(self.font_name, size)
+        text_surface = font.render(text, True, (0,0,0))
+        text_rect = text_surface.get_rect()
+        if mode == "left":
+            text_rect.topleft = (x,y)
+        elif mode == "center":
+            text_rect.center = (x,y)
+        display.blit(text_surface, text_rect)
+
+    def display_menu(self, display):
+        """Display main menu"""
+        display.blit(self.menu_background, (650,0))
+        for icon in self.icons:
+            self.draw_text(display, icon, 10, *self.pos_dict[icon], "left")
+        self.move_cursor(display)
+        self.draw_cursor(display)
+    def move_cursor(self, display):
+        
+        if self.DOWN_KEY:
+            self.i = self.i + 1
+            if self.i > 6:
+                self.i = 0
+            self.current_key = self.icons[self.i]
+        self.DOWN_KEY = False
+        if self.UP_KEY:
+            self.i = self.i-1
+            if self.i < 0:
+                self.i = 6
+            self.current_key = self.icons[self.i]
 
 
 
