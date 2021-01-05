@@ -1,0 +1,63 @@
+{ "frames": {
+   "Bayleef Art_0_Idle": {
+    "frame": { "x": 0, "y": 0, "w": 208, "h": 205 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 301, "y": 124, "w": 208, "h": 205 },
+    "sourceSize": { "w": 800, "h": 480 },
+    "duration": 500
+   },
+   "Bayleef Art_1_Idle": {
+    "frame": { "x": 208, "y": 0, "w": 208, "h": 205 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 301, "y": 124, "w": 208, "h": 205 },
+    "sourceSize": { "w": 800, "h": 480 },
+    "duration": 500
+   },
+   "Bayleef Art_2_walk": {
+    "frame": { "x": 0, "y": 0, "w": 208, "h": 205 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 301, "y": 124, "w": 208, "h": 205 },
+    "sourceSize": { "w": 800, "h": 480 },
+    "duration": 100
+   },
+   "Bayleef Art_3_walk": {
+    "frame": { "x": 416, "y": 0, "w": 208, "h": 205 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 301, "y": 124, "w": 208, "h": 205 },
+    "sourceSize": { "w": 800, "h": 480 },
+    "duration": 100
+   },
+   "Bayleef Art_4_walk": {
+    "frame": { "x": 0, "y": 205, "w": 208, "h": 205 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 301, "y": 124, "w": 208, "h": 205 },
+    "sourceSize": { "w": 800, "h": 480 },
+    "duration": 100
+   },
+   "Bayleef Art_5_walk": {
+    "frame": { "x": 208, "y": 205, "w": 208, "h": 205 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 301, "y": 124, "w": 208, "h": 205 },
+    "sourceSize": { "w": 800, "h": 480 },
+    "duration": 100
+   }
+ },
+ "meta": {
+  "app": "http://www.aseprite.org/",
+  "version": "1.2.25-dev",
+  "image": "Bayleef Art.png",
+  "format": "I8",
+  "size": { "w": 624, "h": 410 },
+  "scale": "1",
+  "frameTags": [
+   { "name": "Idle", "from": 0, "to": 1, "direction": "forward" },
+   { "name": "walk", "from": 2, "to": 5, "direction": "forward" }
+  ]
+ }
+}
