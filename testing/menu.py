@@ -6,7 +6,10 @@ class Menu():
         self.menu_background = pygame.image.load('backgrounds/menu background.png').convert_alpha()
         self.menu_running = True
         self.START_KEY, self.BACK_KEY, self.UP_KEY, self.DOWN_KEY = False, False, False, False
-        self.state = 'MAIN'
+        self.curr_menu = 'main'
+        self.menu_change = False
+        self.game_loop_change = False
+        
 
 
     def check_events(self):
@@ -43,10 +46,10 @@ class Menu():
 
     def draw_cursor(self, display):
         self.draw_text(display, '>', 10, self.pos_dict[self.current_key][0] - 10, self.pos_dict[self.current_key][1], "left")
-        print(self.i)
+        
 
     def reset_keys(self):
-        self.UP_KEY, self.DOWN_KEY = False, False  
+        self.UP_KEY, self.DOWN_KEY, self.START_KEY = False, False, False  
 
 class MainMenu(Menu):
     def __init__(self):
@@ -91,7 +94,9 @@ class MainMenu(Menu):
         for icon in self.icons:
             self.draw_text(display, icon, 10, *self.pos_dict[icon], "left")
         self.move_cursor(display)
+        self.check_input()
         self.draw_cursor(display)
+    
     def move_cursor(self, display):
         
         if self.DOWN_KEY:
@@ -108,6 +113,13 @@ class MainMenu(Menu):
         if self.START_KEY == True:
             self.state = self.icons[self.i]
 
+    def check_input(self):
+        if self.START_KEY:
+            print("start key recognized")
+            if self.state == 'EAT':
+                self.curr_menu = "eat menu"
+                self.menu_change = True
+                
 
 class EatMenu(Menu):
     def __init__(self):
@@ -120,8 +132,9 @@ class EatMenu(Menu):
         self.snackx, self.snacky = 660, 10
         self.mealx, self.mealy = 660, 30
 
-        self.pos_dict = {'SNACK': (self.snackx, self.mealy),
+        self.pos_dict = {'SNACK': (self.snackx, self.snacky),
             'MEAL': (self.mealx, self.mealy)}
+
 
     def draw_text(self, display, text, size, x, y , mode):
         """Create text surface and blit onto another display surface.
@@ -142,23 +155,31 @@ class EatMenu(Menu):
         for icon in self.icons:
             self.draw_text(display, icon, 10, *self.pos_dict[icon], "left")
         self.move_cursor(display)
+        self.check_input()
         self.draw_cursor(display)
+
     def move_cursor(self, display):
         
         if self.DOWN_KEY:
             self.i = self.i + 1
-            if self.i > 6:
+            if self.i > 1:
                 self.i = 0
             self.current_key = self.icons[self.i]
         self.DOWN_KEY = False
         if self.UP_KEY:
             self.i = self.i-1
             if self.i < 0:
-                self.i = 6
+                self.i = 1
             self.current_key = self.icons[self.i]
+        if self.START_KEY == True:
+            self.state = self.icons[self.i]
 
-
-
+    def check_input(self):
+        if self.START_KEY:
+            if self.state == 'SNACK':
+                print("should switch")
+                self.game_loop_change = True
+                
 
 
 

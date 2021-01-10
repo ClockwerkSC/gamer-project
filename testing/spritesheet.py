@@ -11,6 +11,9 @@ class Spritesheet:
         f.close()
         self.idle_frames = []
         self.walk_frames = []
+        self.passive_kitchen_frames = []
+        self.eating_frames = []
+        self.food_frames = []
 
     def get_sprite(self, x, y, w, h):
         """Return sprite based of the size and position data grabbed from the json file"""
@@ -28,14 +31,24 @@ class Spritesheet:
 
     def get_frames(self):
         """Automatically get the frames for each animation sequence from the meta data in json file"""
-        for ftag in self.data['frames']:
-            if "idle" in ftag.lower():
-                self.idle_frames.append(self.parse_sprite(ftag))
-            if "walk" in ftag.lower():
-                self.walk_frames.append(self.parse_sprite(ftag))
-        return self.idle_frames, self.walk_frames
 
+        if 'character' in self.filename:
+            for ftag in self.data['frames']:
+                if "idle" in ftag.lower():
+                    self.idle_frames.append(self.parse_sprite(ftag))
+                if "walk" in ftag.lower():
+                    self.walk_frames.append(self.parse_sprite(ftag))
+                if "passive kitchen" in ftag.lower():
+                    self.passive_kitchen_frames.append(self.parse_sprite(ftag))
+                if "eating" in ftag.lower():
+                    self.eating_frames.append(self.parse_sprite(ftag))
+            return self.idle_frames, self.walk_frames, self.passive_kitchen_frames, self.eating_frames
 
+        if 'food' in self.filename:
+            for ftag in self.data['frames']:
+                self.food_frames.append(self.parse_sprite(ftag))
+            
+            return self.food_frames
 
 
 

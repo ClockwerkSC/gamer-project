@@ -16,7 +16,7 @@ class Player(pygame.sprite.Sprite):
             'meganium': 'character_spritesheets/Meganium Art.png',
             }
         self.sname = p_spritesheet[spritesheet_name.lower()]
-        self.LEFT_KEY, self.RIGHT_KEY, self.FACING_LEFT, self.SPACE, self.BACK, self.Q, self.Z = False, False, False, False, False, False, False
+        self.LEFT_KEY, self.RIGHT_KEY, self.FACING_LEFT, self.SPACE, self.BACK, self.Q, self.Z, self.E = False, False, False, False, False, False, False, False
         self.load_frames()
         self.rect = self.idle_frames_left[0].get_rect()
         self.rect.midbottom = (240, 450)
@@ -40,7 +40,21 @@ class Player(pygame.sprite.Sprite):
     def draw(self, display):
         """ Draw the characters current frame onto the window"""
         display.blit(self.current_image, self.rect) 
-         
+    
+    def ai_handler(self):
+        if self.ai_duration <= 0:
+            self.get_ai_duration()
+
+        self.ai_duration -=1
+
+        if self.velocity == 1 and self.rect.right > 800:
+            self.get_ai_duration()
+
+        if self.velocity == -1 and self.rect.left < 0:
+            self.get_ai_duration()
+
+        self.rect.x += self.velocity
+
     def update(self):
         """Change the velocity of the character based on user input.
         The position of the character is updated, and the character attributes are updated.
@@ -52,14 +66,7 @@ class Player(pygame.sprite.Sprite):
         # elif self.RIGHT_KEY and self.rect.right < 800:
         #     self.velocity = 2
 
-        # Radomly assign AI movement for character
-        if self.ai_duration <= 0:
-            self.get_ai_duration()
-        self.ai_duration -=1
-
-        self.rect.x += self.velocity
-        self.set_state()
-        self.animate()
+        
         self.increase_xp() 
         self.happiness_update()
         self.hunger_update()
@@ -67,19 +74,27 @@ class Player(pygame.sprite.Sprite):
     def get_ai_duration(self):
         """Character is randomly assigned to walk left, walk right, or wait for a random period of time"""
         self.ai_duration = random.randint(10,100)
-        self.velocity = random.choice([1,0, 0, 0, 0, 0, -1])
-        if self.velocity == -1:
-            self.FACING_LEFT = True
-        if self.velocity == 1:
+        self.velocity = random.choice([1, 0, 0, 0 -1])
+        if self.velocity == 1: 
             self.FACING_LEFT = False
-
+        elif self.velocity == -1: 
+            self.FACING_LEFT = True
+        
     def set_state(self):
         """Change to the correct animation sequence based on motion of the character"""
-        self.state = 'idle'
+        
         if self.velocity > 0:
             self.state = 'moving right'
         elif self.velocity < 0:
-            self.state = 'moving left' 
+            self.state = 'moving left'
+        elif self.velocity == 0:
+            self.state = 'idle' 
+
+    def kitchen_set_state(self):
+        if self.E:
+            self.state = 'eating'
+            self.food = True 
+            print("should be eating state")
 
     def animate(self):
         """Select the correct frame in the animation sequence based on the current state
@@ -94,6 +109,31 @@ class Player(pygame.sprite.Sprite):
                     self.current_image = self.idle_frames_left[self.current_frame]
                 elif not self.FACING_LEFT:
                     self.current_image = self.idle_frames_right[self.current_frame]
+            self.x_now, self.y_now = self.rect.bottomleft
+            self.rect = self.current_image.get_rect()
+            self.rect.bottom = 450
+            self.rect.bottomleft = self.x_now, self.y_now
+       
+
+        elif self.state == 'eating':
+            if now - self.last_updated_animated_time > 300:
+                self.last_updated_animated_time = now
+                if self.current_frame < (len(self.eating_frames)):
+                    self.current_image = self.eating_frames[self.current_frame]
+                    self.rect = self.current_image.get_rect()
+                    self.rect.midbottom = (320, 314)
+                    self.current_frame +=1
+                else:
+                    self.state = 'passive kitchen'
+
+        elif self.state == 'passive kitchen':
+            if now - self.last_updated_animated_time > 200:
+                self.last_updated_animated_time = now  
+                self.current_frame = (self.current_frame +1) % len(self.passive_kitchen_frames) 
+                self.current_image = self.passive_kitchen_frames[self.current_frame]
+                self.rect = self.current_image.get_rect()
+                self.rect.midbottom = (320, 314)
+
         else:
             if now - self.last_updated_animated_time > 100:
                 self.last_updated_animated_time = now
@@ -102,15 +142,15 @@ class Player(pygame.sprite.Sprite):
                     self.current_image = self.walking_frames_left[self.current_frame]
                 elif self.state == 'moving right':
                     self.current_image = self.walking_frames_right[self.current_frame]
-        self.x_now, self.y_now = self.rect.bottomleft
-        self.rect = self.current_image.get_rect()
-        self.rect.bottom = 450
-        self.rect.bottomleft = self.x_now, self.y_now
+            self.x_now, self.y_now = self.rect.bottomleft
+            self.rect = self.current_image.get_rect()
+            self.rect.bottom = 450
+            self.rect.bottomleft = self.x_now, self.y_now
 
     def load_frames(self):
         """load the frames from the spritesheets and create animations sequences for opposite direction"""  
         my_spritesheet = Spritesheet(self.sname)
-        self.idle_frames_right, self.walking_frames_right = my_spritesheet.get_frames()
+        self.idle_frames_right, self.walking_frames_right, self.passive_kitchen_frames, self.eating_frames = my_spritesheet.get_frames()
         self.idle_frames_left = []
         for frame in self.idle_frames_right:
             self.idle_frames_left.append(pygame.transform.flip(frame, True, False))
@@ -135,10 +175,7 @@ class Player(pygame.sprite.Sprite):
             self.happiness -= 10
             if self.happiness <= 0:
                 self.happiness = 0
-        if self.Q and self.happiness < self.happiness_max:
-            self.happiness += 5
-            if self.happiness > self.happiness_max:
-                self.happiness = self.happiness_max
+        
 
 
     def hunger_update(self):
@@ -149,14 +186,16 @@ class Player(pygame.sprite.Sprite):
             self.hunger -= 10
             if self.hunger <= 0:
                 self.hunger = 0
-        if self.Z and self.hunger < self.hunger_max:
-            self.hunger += 5
+        
+    def eat(self):
+        if self.E and (self.hunger < self.hunger_max) and (self.state != 'eating'):
+            self.hunger += 50
             if self.hunger > self.hunger_max:
                 self.hunger = self.hunger_max
 
-    
 
-
+    def reset_keys(self):
+        self.LEFT_KEY, self.RIGHT_KEY, self.SPACE, self.BACK, self.Q, self.Z, self.E = False, False, False, False, False, False, False
 
 
 
