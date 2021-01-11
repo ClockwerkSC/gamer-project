@@ -19,7 +19,9 @@ class Game():
 		self.eat_menu = EatMenu()
 		self.curr_menu = self.main_menu
 		self.hud = Hud()
-		self.game_flag = False
+		self.snack_flag = False
+		self.meal_flag = False
+		self.play_flag = False
 
 		self.poke = Player('croconaw')
 
@@ -46,6 +48,7 @@ class Game():
 					self.Z = True 
 				elif event.key == pygame.K_ESCAPE:
 					self.ESCAPE = True
+					self.curr_menu.menu_running = True
 				elif event.key == pygame.K_e:
 					self.E = True
 					self.poke.E = True
@@ -89,14 +92,21 @@ class Idle(Game):
 
 			if self.ESCAPE:
 				while self.curr_menu.menu_running:
-					if self.curr_menu.game_loop_change == True:
-						self.game_flag = True
+					if self.curr_menu.snack_loop_change == True:
+						self.snack_flag = True
 						self.curr_menu.menu_running = False
 						self.running = False
-						print("game flag set")
-					if self.curr_menu.menu_change:
+					elif self.curr_menu.meal_loop_change == True:
+						self.meal_flag = True
+						self.curr_menu.menu_running = False
+						self.running = False
+					if self.curr_menu.eat_menu_change:
 						self.curr_menu = EatMenu()
-						self.curr_menu.menu_change = False
+						self.curr_menu.eat_menu_change = False
+					elif self.curr_menu.play_loop_change:
+						self.curr_menu.menu_running = False
+						self.curr_menu.play_loop_change = False
+
 					self.curr_menu.check_events()
 					self.curr_menu.display_menu(self.canvas)
 					self.window.blit(self.canvas, (0,0))
@@ -104,17 +114,18 @@ class Idle(Game):
 					self.curr_menu.reset_keys()
 					
 class Eat(Game):
-	def __init__(self):
+	def __init__(self, food):
 		Game.__init__(self)
 		self.house = pygame.image.load('backgrounds/kitchen.png')
-		self.current_food = Food('pink poke puff.png')
+		self.current_food = Food(food)
 
 	def run_game(self):
+		self.poke.kitchen_set_state()
 		while self.running:
 			self.check_events()
 			self.poke.eat()
 			self.poke.update()
-			self.poke.kitchen_set_state()
+			
 			self.poke.animate()
 			self.canvas.blit(self.house, (0,0))
 			self.poke.draw(self.canvas)
@@ -122,7 +133,32 @@ class Eat(Game):
 			if self.poke.state == 'eating':
 				self.current_food.fooddraw(self.canvas)
 			else:
-				self.current_food.reset()
+				self.curr_menu = EatMenu()
+				while self.curr_menu.menu_running:
+					if self.curr_menu.snack_loop_change == True:
+						self.snack_flag = True
+						self.curr_menu.menu_running = False
+						self.running = False
+					elif self.curr_menu.meal_loop_change == True:
+						self.meal_flag = True
+						self.curr_menu.menu_running = False
+						self.running = False
+					elif self.curr_menu.play_loop_change == True:
+						self.play_flag = True
+						self.curr_menu.menu_running = False
+						self.running = False
+					if self.curr_menu.main_menu_change:
+						self.curr_menu = MainMenu()
+						self.curr_menu.main_menu_change = False
+					if self.curr_menu.eat_menu_change:
+						self.curr_menu = EatMenu()
+						self.curr_menu.main_menu_change = False
+					self.curr_menu.check_events()
+					self.curr_menu.display_menu(self.canvas)
+					self.window.blit(self.canvas, (0,0))
+					pygame.display.update()
+					self.curr_menu.reset_keys()
+				
 			self.window.blit(self.canvas, (0,0))
 			pygame.display.update()	
 			self.poke.reset_keys()

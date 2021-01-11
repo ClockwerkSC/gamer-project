@@ -7,10 +7,11 @@ class Menu():
         self.menu_running = True
         self.START_KEY, self.BACK_KEY, self.UP_KEY, self.DOWN_KEY = False, False, False, False
         self.curr_menu = 'main'
-        self.menu_change = False
-        self.game_loop_change = False
-        
-
+        self.eat_menu_change = False
+        self.snack_loop_change = False
+        self.meal_loop_change = False
+        self.main_menu_change = False
+        self.play_loop_change = False
 
     def check_events(self):
         """ Check for key presses and set appropriate flags"""
@@ -115,10 +116,13 @@ class MainMenu(Menu):
 
     def check_input(self):
         if self.START_KEY:
-            print("start key recognized")
+            
             if self.state == 'EAT':
+                print("bring to eat menu")
                 self.curr_menu = "eat menu"
-                self.menu_change = True
+                self.eat_menu_change = True
+            if self.state == 'PLAY':
+                self.play_loop_change = True
                 
 
 class EatMenu(Menu):
@@ -178,8 +182,13 @@ class EatMenu(Menu):
         if self.START_KEY:
             if self.state == 'SNACK':
                 print("should switch")
-                self.game_loop_change = True
-                
+                self.snack_loop_change = True
+            elif self.state == 'MEAL':
+                self.meal_loop_change = True
+        if self.BACK_KEY:
+            print("Back key recognized")
+            self.curr_menu = "play menu"
+            self.main_menu_change = True
 
 
 

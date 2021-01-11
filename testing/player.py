@@ -91,10 +91,10 @@ class Player(pygame.sprite.Sprite):
             self.state = 'idle' 
 
     def kitchen_set_state(self):
-        if self.E:
-            self.state = 'eating'
-            self.food = True 
-            print("should be eating state")
+        
+        self.state = 'eating'
+        self.food = True 
+        print("should be eating state")
 
     def animate(self):
         """Select the correct frame in the animation sequence based on the current state
@@ -188,7 +188,7 @@ class Player(pygame.sprite.Sprite):
                 self.hunger = 0
         
     def eat(self):
-        if self.E and (self.hunger < self.hunger_max) and (self.state != 'eating'):
+        if self.state != 'eating':
             self.hunger += 50
             if self.hunger > self.hunger_max:
                 self.hunger = self.hunger_max
