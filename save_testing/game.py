@@ -33,6 +33,8 @@ class Game():
 				
 				
 				self.running = False
+				self.idle_running = False
+				self.eating_running = False
 				
 
 			if event.type == pygame.KEYDOWN:
@@ -76,6 +78,7 @@ class Game():
 
 	def Idle(self):
 		self.house = pygame.image.load('backgrounds/living room.png')
+		self.poke.rect.midbottom = (240, 450)
 		while self.idle_running:
 			self.check_events()
 			self.poke.ai_handler()
@@ -111,12 +114,13 @@ class Game():
 					self.window.blit(self.canvas, (0,0))
 					pygame.display.update()
 					self.curr_menu.reset_keys()
+
 					
 	def Eat(self, food):
 		self.house = pygame.image.load('backgrounds/kitchen.png')
 		self.current_food = Food(food)
- 
 		self.poke.kitchen_set_state()
+		self.poke.current_frame = 0
 		while self.eating_running:
 			self.check_events()
 			self.poke.eat()

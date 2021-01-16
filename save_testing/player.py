@@ -188,8 +188,8 @@ class Player(pygame.sprite.Sprite):
                 self.hunger = 0
         
     def eat(self):
-        if self.state != 'eating':
-            self.hunger += 50
+        if self.current_frame == 0:
+            self.hunger += 200
             if self.hunger > self.hunger_max:
                 self.hunger = self.hunger_max
 
