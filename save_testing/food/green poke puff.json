@@ -1,0 +1,85 @@
+{ "frames": {
+   "green poke puff_0_": {
+    "frame": { "x": 0, "y": 0, "w": 62, "h": 47 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 387, "y": 267, "w": 62, "h": 47 },
+    "sourceSize": { "w": 800, "h": 480 },
+    "duration": 300
+   },
+   "green poke puff_1_": {
+    "frame": { "x": 62, "y": 0, "w": 62, "h": 47 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 387, "y": 267, "w": 62, "h": 47 },
+    "sourceSize": { "w": 800, "h": 480 },
+    "duration": 300
+   },
+   "green poke puff_2_": {
+    "frame": { "x": 124, "y": 0, "w": 62, "h": 47 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 387, "y": 267, "w": 62, "h": 47 },
+    "sourceSize": { "w": 800, "h": 480 },
+    "duration": 300
+   },
+   "green poke puff_3_": {
+    "frame": { "x": 0, "y": 47, "w": 62, "h": 47 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 387, "y": 267, "w": 62, "h": 47 },
+    "sourceSize": { "w": 800, "h": 480 },
+    "duration": 300
+   },
+   "green poke puff_4_": {
+    "frame": { "x": 62, "y": 47, "w": 62, "h": 47 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 387, "y": 267, "w": 62, "h": 47 },
+    "sourceSize": { "w": 800, "h": 480 },
+    "duration": 300
+   },
+   "green poke puff_5_": {
+    "frame": { "x": 124, "y": 47, "w": 62, "h": 47 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 387, "y": 267, "w": 62, "h": 47 },
+    "sourceSize": { "w": 800, "h": 480 },
+    "duration": 300
+   },
+   "green poke puff_6_": {
+    "frame": { "x": 0, "y": 94, "w": 62, "h": 47 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 387, "y": 267, "w": 62, "h": 47 },
+    "sourceSize": { "w": 800, "h": 480 },
+    "duration": 300
+   },
+   "green poke puff_7_": {
+    "frame": { "x": 62, "y": 94, "w": 62, "h": 47 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 387, "y": 267, "w": 62, "h": 47 },
+    "sourceSize": { "w": 800, "h": 480 },
+    "duration": 300
+   },
+   "green poke puff_8_": {
+    "frame": { "x": 124, "y": 94, "w": 62, "h": 47 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 387, "y": 267, "w": 62, "h": 47 },
+    "sourceSize": { "w": 800, "h": 480 },
+    "duration": 300
+   }
+ },
+ "meta": {
+  "app": "http://www.aseprite.org/",
+  "version": "1.2.25-dev",
+  "image": "green poke puff.png",
+  "format": "I8",
+  "size": { "w": 186, "h": 141 },
+  "scale": "1",
+  "frameTags": [
+  ]
+ }
+}
