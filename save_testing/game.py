@@ -3,6 +3,7 @@ from player import Player
 from menu import *
 from hud import Hud
 from food import Food
+from touch import GameTouch
 
 class Game():
 	def __init__(self):
@@ -24,8 +25,11 @@ class Game():
 		self.play_flag = False
 		self.idle_running = True
 		self.eating_running = True
+		self.mouse_flag = False
+		self.mouse_x, self.mouse_y = 0, 0 
 
 		self.poke = Player('croconaw')
+		self.touch_display = GameTouch()
 
 	def check_events(self):
 		for event in pygame.event.get():
@@ -59,28 +63,42 @@ class Game():
 
 
 
-				if event.type == pygame.KEYUP:
-					if event.key == pygame.K_LEFT:
-						self.LEFT_KEY = False
-					elif event.key == pygame.K_RIGHT:
-						self.RIGHT_KEY = False
-					elif event.key == pygame.K_SPACE:
-						self.SPACE = False
-					elif event.key == pygame.K_BACKSPACE:
-						self.BACK_KEY = False
-					elif event.key == pygame.K_q:
-						self.Q = False
-					elif event.key == pygame.K_z:
-						self.Z = False
-					elif event.key == pygame.K_e:
-						self.E = False
-						self.poke.E = False
+			if event.type == pygame.KEYUP:
+				if event.key == pygame.K_LEFT:
+					self.LEFT_KEY = False
+				elif event.key == pygame.K_RIGHT:
+					self.RIGHT_KEY = False
+				elif event.key == pygame.K_SPACE:
+					self.SPACE = False
+				elif event.key == pygame.K_BACKSPACE:
+					self.BACK_KEY = False
+				elif event.key == pygame.K_q:
+					self.Q = False
+				elif event.key == pygame.K_z:
+					self.Z = False
+				elif event.key == pygame.K_e:
+					self.E = False
+					self.poke.E = False
+
+			if event.type == pygame.FINGERDOWN:
+			
+				self.mouse_x, self.mouse_y = event.x, event.y 
+				self.mouse_flag = True
+				print(event.x, event.y)
+
+	def reset_mouse(self):
+		self.mouse_flag = False			
 
 	def Idle(self):
 		self.house = pygame.image.load('backgrounds/living room.png')
 		self.poke.rect.midbottom = (240, 450)
 		while self.idle_running:
 			self.check_events()
+			if self.mouse_flag:
+				 if self.touch_display.touch_gameloop_checkinput(self.mouse_x, self.mouse_y) == "menu button pressed":
+				 	self.ESCAPE = True
+				 	self.curr_menu.menu_running = True
+			
 			self.poke.ai_handler()
 			self.poke.update()
 			self.poke.set_state()
@@ -88,8 +106,10 @@ class Game():
 			self.canvas.blit(self.house, (0, 0))
 			self.poke.draw(self.canvas)
 			self.hud.hud_update(self.canvas, self.poke)
+			self.touch_display.touch_gameloop_draw(self.canvas)
 			self.window.blit(self.canvas, (0,0))
 			pygame.display.update()
+			self.reset_mouse()
 
 
 			if self.ESCAPE:
@@ -105,6 +125,9 @@ class Game():
 					if self.curr_menu.eat_menu_change:
 						self.curr_menu = EatMenu()
 						self.curr_menu.eat_menu_change = False
+					if self.curr_menu.main_menu_change:
+						self.curr_menu = MainMenu()
+						self.curr_menu.main_menu_change = False
 					elif self.curr_menu.play_loop_change:
 						self.curr_menu.menu_running = False
 						self.curr_menu.play_loop_change = False
@@ -114,6 +137,9 @@ class Game():
 					self.window.blit(self.canvas, (0,0))
 					pygame.display.update()
 					self.curr_menu.reset_keys()
+					self.curr_menu.reset_mouse()
+
+			self.ESCAPE = False
 
 					
 	def Eat(self, food):
@@ -158,6 +184,7 @@ class Game():
 					self.window.blit(self.canvas, (0,0))
 					pygame.display.update()
 					self.curr_menu.reset_keys()
+					self.curr_menu.reset_mouse()
 				
 			self.window.blit(self.canvas, (0,0))
 			pygame.display.update()	

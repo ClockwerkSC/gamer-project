@@ -1,6 +1,6 @@
 import pygame
 from hud import Hud
-
+from touch import MenuTouch
 class Menu():
     def __init__(self):
         self.menu_background = pygame.image.load('backgrounds/menu background.png').convert_alpha()
@@ -12,6 +12,8 @@ class Menu():
         self.meal_loop_change = False
         self.main_menu_change = False
         self.play_loop_change = False
+        self.mouse_flag = False
+        self.touch_display = MenuTouch()
 
     def check_events(self):
         """ Check for key presses and set appropriate flags"""
@@ -32,6 +34,11 @@ class Menu():
                     self.DOWN_KEY = False
                 if event.key == pygame.K_UP:
                     self.UP_KEY = False
+
+            if event.type == pygame.FINGERDOWN:
+                
+                self.mouse_x, self.mouse_y = event.x, event.y 
+                self.mouse_flag = True
     def draw_text(self, display, text, size, x, y , mode):
         """Create text surface and blit onto another display surface.
         There is an option to scpecifiy the location by center or topleft corner
@@ -51,6 +58,9 @@ class Menu():
 
     def reset_keys(self):
         self.UP_KEY, self.DOWN_KEY, self.START_KEY = False, False, False  
+
+    def reset_mouse(self):
+        self.mouse_flag = False
 
 class MainMenu(Menu):
     def __init__(self):
@@ -94,6 +104,17 @@ class MainMenu(Menu):
         display.blit(self.menu_background, (650,0))
         for icon in self.icons:
             self.draw_text(display, icon, 10, *self.pos_dict[icon], "left")
+            self.touch_display.touch_menuloop_draw(display)
+
+        if self.mouse_flag:
+            if self.touch_display.touch_menuloop_checkinput(self.mouse_x, self.mouse_y) == "a button pressed":
+                self.START_KEY = True
+            elif self.touch_display.touch_menuloop_checkinput(self.mouse_x, self.mouse_y) == "b button pressed":
+                self.BACK_KEY = True
+            elif self.touch_display.touch_menuloop_checkinput(self.mouse_x, self.mouse_y) == "up":
+                self.UP_KEY = True
+            elif self.touch_display.touch_menuloop_checkinput(self.mouse_x, self.mouse_y) == "down":
+                self.DOWN_KEY = True
         self.move_cursor(display)
         self.check_input()
         self.draw_cursor(display)
@@ -158,6 +179,16 @@ class EatMenu(Menu):
         display.blit(self.menu_background, (650,0))
         for icon in self.icons:
             self.draw_text(display, icon, 10, *self.pos_dict[icon], "left")
+        self.touch_display.touch_menuloop_draw(display)
+        if self.mouse_flag:
+            if self.touch_display.touch_menuloop_checkinput(self.mouse_x, self.mouse_y) == "a button pressed":
+                self.START_KEY = True
+            elif self.touch_display.touch_menuloop_checkinput(self.mouse_x, self.mouse_y) == "b button pressed":
+                self.BACK_KEY = True
+            elif self.touch_display.touch_menuloop_checkinput(self.mouse_x, self.mouse_y) == "up":
+                self.UP_KEY = True
+            elif self.touch_display.touch_menuloop_checkinput(self.mouse_x, self.mouse_y) == "down":
+                self.DOWN_KEY = True
         self.move_cursor(display)
         self.check_input()
         self.draw_cursor(display)
