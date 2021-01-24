@@ -3,8 +3,8 @@ from hud import Hud
 from touch import MenuTouch
 class Menu():
     def __init__(self):
-        self.menu_background = pygame.image.load('assets/backgrounds/menu background.png').convert_alpha()
-        self.font_name = "assets/fonts/Pokemon Classic.TTF"
+        self.menu_background = pygame.image.load('../assets/backgrounds/menu background.png').convert_alpha()
+        self.font_name = "../assets/fonts/Pokemon Classic.TTF"
         self.menu_running = True
         self.START_KEY, self.BACK_KEY, self.UP_KEY, self.DOWN_KEY = False, False, False, False
         self.curr_menu = 'main'

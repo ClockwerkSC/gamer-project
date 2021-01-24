@@ -2,10 +2,10 @@ import pygame
 
 class Hud():
     def __init__(self):
-        self.font_name = "assets/fonts/Pokemon Classic.TTF"
+        self.font_name = "../assets/fonts/Pokemon Classic.TTF"
          #Setting geometries for the HUD
         self.HUD_width = 450
-        self.blank_HUD_background = pygame.image.load('assets/HUD/blank hud background.png').convert_alpha()
+        self.blank_HUD_background = pygame.image.load('../assets/HUD/blank hud background.png').convert_alpha()
 
         
         
@@ -40,7 +40,7 @@ class DefaultHud(Hud):
         self.status_text_y_offset = self.xp_bar_y_offset - 16
         self.happiness_color = pygame.Color('#33FF41')
         self.hunger_color = pygame.Color('#33FF41')
-        self.default_HUD_background = pygame.image.load('assets/HUD/HUD.png').convert_alpha()
+        self.default_HUD_background = pygame.image.load('../assets/HUD/HUD.png').convert_alpha()
 
     def hud_update(self, display, object):
         """draw and blit all objects necessary to create the HUD""" 

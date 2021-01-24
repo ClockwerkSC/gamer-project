@@ -4,7 +4,7 @@ import os.path
 
 class GameTouch():
     def __init__(self):
-        self.menu_button = pygame.image.load('assets/touch_buttons/menu button.png').convert_alpha()
+        self.menu_button = pygame.image.load('../assets/touch_buttons/menu button.png').convert_alpha()
         
         self.menu_button_x_offset, self.menu_button_y_offset = 650, 400
         
@@ -20,9 +20,9 @@ class GameTouch():
         
 class MenuTouch():
     def __init__(self):
-        self.a_button =  pygame.image.load('assets/touch_buttons/A button.png').convert_alpha()
-        self.b_button =  pygame.image.load('assets/touch_buttons/B button.png').convert_alpha()
-        self.dpad = pygame.image.load('assets/touch_buttons/dpad.png').convert_alpha()
+        self.a_button =  pygame.image.load('../assets/touch_buttons/A button.png').convert_alpha()
+        self.b_button =  pygame.image.load('../assets/touch_buttons/B button.png').convert_alpha()
+        self.dpad = pygame.image.load('../assets/touch_buttons/dpad.png').convert_alpha()
 
         self.a_button_x_offset, self.a_button_y_offset = 675, 325
         self.b_button_x_offset, self.b_button_y_offset = 550, 375

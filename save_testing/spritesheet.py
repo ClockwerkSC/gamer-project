@@ -9,11 +9,17 @@ class Spritesheet:
         with open(self.meta_data) as f:
             self.data = json.load(f)
         f.close()
+        
         self.idle_frames = []
         self.walk_frames = []
         self.passive_kitchen_frames = []
+        
         self.eating_frames = []
         self.food_frames = []
+
+        self.emerge_frames = []
+        self.death_frames = []
+        self.swim_frames = []
 
     def get_sprite(self, x, y, w, h):
         """Return sprite based of the size and position data grabbed from the json file"""
@@ -36,19 +42,28 @@ class Spritesheet:
             for ftag in self.data['frames']:
                 if "idle" in ftag.lower():
                     self.idle_frames.append(self.parse_sprite(ftag))
-                if "walk" in ftag.lower():
+                elif "walk" in ftag.lower():
                     self.walk_frames.append(self.parse_sprite(ftag))
-                if "passive kitchen" in ftag.lower():
+                elif "passive kitchen" in ftag.lower():
                     self.passive_kitchen_frames.append(self.parse_sprite(ftag))
-                if "eating" in ftag.lower():
+                elif "eating" in ftag.lower():
                     self.eating_frames.append(self.parse_sprite(ftag))
             return self.idle_frames, self.walk_frames, self.passive_kitchen_frames, self.eating_frames
 
-        if 'food' in self.filename:
+        elif 'food' in self.filename:
             for ftag in self.data['frames']:
                 self.food_frames.append(self.parse_sprite(ftag))
             
             return self.food_frames
 
 
+        elif 'magikarp' in self.filename:
+            for ftag in self.data['frames']:
+                if "emerge" in ftag.lower():
+                    self.emerge_frames.append(self.parse_sprite(ftag))
+                elif "death" in ftag.lower():
+                    self.death_frames.append(self.parse_sprite(ftag))
+                elif "swim" in ftag.lower():
+                    self.swim_frames.append(self.parse_sprite(ftag))
+            return self.emerge_frames, self.death_frames, self.swim_frames
 

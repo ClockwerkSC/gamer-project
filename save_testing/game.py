@@ -101,7 +101,7 @@ class Game():
 		self.UP_KEY, self.DOWN_KEY, self.START_KEY, self.BACK_KEY, self.LEFT_KEY, self.RIGHT_KEY, self.SPACE, self.Q, self.Z, self.BACK_KEY, self.E, self.ESCAPE = False, False, False, False, False, False, False, False, False, False, False, False 		
 
 	def Idle(self):
-		self.house = pygame.image.load('assets/backgrounds/living room.png')
+		self.house = pygame.image.load('../assets/backgrounds/living room.png')
 		self.poke.rect.midbottom = (240, 450)
 		while self.idle_running:
 
@@ -172,7 +172,7 @@ class Game():
 
 					
 	def Eat(self, food):
-		self.house = pygame.image.load('assets/backgrounds/kitchen.png')
+		self.house = pygame.image.load('../assets/backgrounds/kitchen.png')
 		self.current_food = Food(food)
 		self.poke.kitchen_set_state()
 		self.poke.current_frame = 0
@@ -230,7 +230,7 @@ class Game():
 
 
 	def water_mini(self):
-		self.water = pygame.image.load('assets/backgrounds/water.png')
+		self.water = pygame.image.load('../assets/backgrounds/water.png')
 		self.water_jet = pygame.image.load('test water jet.png')
 		self.water_character = WaterCharacter()
 		self.magicarp = Magicarp()
@@ -250,31 +250,34 @@ class Game():
 					self.water_character.move_right()
 				if self.SPACE:
 					self.waterjets.append([self.water_character.rect.centerx, self.water_character.rect.y] )
-				self.canvas.blit(self.water, (0,0))
-				for waterjet in self.waterjets:
-					self.canvas.blit(self.water_jet, waterjet)
-				self.magicarp.draw(self.canvas)
-				self.water_character.draw(self.canvas)
-				self.water_hud.hud_update(self.canvas, self.current_score)
-				self.window.blit(self.canvas, (0,0))
-				pygame.display.update()
+
 
 				for waterjet in self.waterjets:
 					waterjet[1] -= 10
 					if waterjet[1] < 0 :
 						self.waterjets.remove(waterjet)
 					elif waterjet[0] in range(self.magicarp.rect.centerx - 20, self.magicarp.rect.centerx + 20) and waterjet[1] in range (self.magicarp.rect.centery - 20, self.magicarp.rect.centery + 5):
-						self.magicarp.get_new_position()
+						self.magicarp.state = 'death'
 						self.waterjets.remove(waterjet)
 						self.current_score += 1
 
-				if self.magicarp.rect.y <= 320:
+				if self.magicarp.rect.bottom <= 320 and self.magicarp.state != 'death':
 					self.magicarp.move_forward()
-				else:
+				elif self.magicarp.rect.bottom > 320:
 					self.distance_triggered = True
-					
-				self.SPACE = False
+				
+				self.canvas.blit(self.water, (0,0))
+				for waterjet in self.waterjets:
+					self.canvas.blit(self.water_jet, waterjet)
+				self.magicarp.animation()
+				self.magicarp.draw(self.canvas)
+				self.water_character.draw(self.canvas)
+				self.water_hud.hud_update(self.canvas, self.current_score)
+				self.window.blit(self.canvas, (0,0))
+				pygame.display.update()
 
+				self.SPACE = False
+				
 			else:
 				while self.magicarp.smacked == False:
 					

@@ -6,15 +6,15 @@ from spritesheet import Spritesheet
 class Player(pygame.sprite.Sprite):
     def __init__(self, spritesheet_name):
         pygame.sprite.Sprite.__init__(self)
-        p_spritesheet = {'totodile': 'assets/character_spritesheets/Totodile Art.png',
-            'croconaw': 'assets/character_spritesheets/Croconaw Art.png',
-            'feraligatr': 'assets/character_spritesheets/Feraligatr Art.png',
-            'cyndaquil': 'assets/character_spritesheets/Cyndaquil Art.png',
-            'quilava': 'assets/character_spritesheets/Quilava Art.png',
-            'typhlosion': 'assets/character_spritesheets/Typhlosion Art.png',
-            'chikorita': 'assets/character_spritesheets/Chikorita Art.png',
-            'bayleef': 'assets/character_spritesheets/Bayleef Art.png',
-            'meganium': 'assets/character_spritesheets/Meganium Art.png',
+        p_spritesheet = {'totodile': '../assets/character_spritesheets/Totodile Art.png',
+            'croconaw': '../assets/character_spritesheets/Croconaw Art.png',
+            'feraligatr': '../assets/character_spritesheets/Feraligatr Art.png',
+            'cyndaquil': '../assets/character_spritesheets/Cyndaquil Art.png',
+            'quilava': '../assets/character_spritesheets/Quilava Art.png',
+            'typhlosion': '../assets/character_spritesheets/Typhlosion Art.png',
+            'chikorita': '../assets/character_spritesheets/Chikorita Art.png',
+            'bayleef': '../assets/character_spritesheets/Bayleef Art.png',
+            'meganium': '../assets/character_spritesheets/Meganium Art.png',
             }
         self.sname = p_spritesheet[spritesheet_name.lower()]
         self.LEFT_KEY, self.RIGHT_KEY, self.FACING_LEFT, self.SPACE, self.BACK, self.Q, self.Z, self.E = False, False, False, False, False, False, False, False
