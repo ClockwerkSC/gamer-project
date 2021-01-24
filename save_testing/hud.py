@@ -2,22 +2,13 @@ import pygame
 
 class Hud():
     def __init__(self):
-        self.font_name = "Pokemon Classic.TTF"
+        self.font_name = "assets/fonts/Pokemon Classic.TTF"
          #Setting geometries for the HUD
         self.HUD_width = 450
-        self.xp_barwidth = 100
-        self.xp_levelwidth = 0
-        self.happiness_levelwidth = self.xp_barwidth
-        self.hunger_levelwidth = self.xp_barwidth
+        self.blank_HUD_background = pygame.image.load('assets/HUD/blank hud background.png').convert_alpha()
+
         
-        self.xp_bar_x_offset = (self.HUD_width / (3) * 1) - self.xp_barwidth * 1.25
-        self.xp_bar_y_offset = 30
-        self.happy_bar_x_offset = (self.HUD_width / (3) * 2) - self.xp_barwidth * 1.25
-        self.hunger_bar_x_offset = (self.HUD_width / (3) * 3) - self.xp_barwidth * 1.25
-        self.status_text_y_offset = self.xp_bar_y_offset - 16
-        self.HUD_background = pygame.image.load('HUD.png').convert_alpha()
-        self.happiness_color = pygame.Color('#33FF41')
-        self.hunger_color = pygame.Color('#33FF41')
+        
 
     def draw_text(self, display, text, size, x, y, mode):
         """Create text surface and blit onto another display surface.
@@ -32,9 +23,28 @@ class Hud():
             text_rect.center = (x, y)
         display.blit(text_surface, text_rect)
 
+    
+
+class DefaultHud(Hud):
+    def __init__ (self):
+        Hud.__init__(self)
+        self.xp_barwidth = 100
+        self.xp_levelwidth = 0
+        self.happiness_levelwidth = self.xp_barwidth
+        self.hunger_levelwidth = self.xp_barwidth
+        
+        self.xp_bar_x_offset = (self.HUD_width / (3) * 1) - self.xp_barwidth * 1.25
+        self.xp_bar_y_offset = 30
+        self.happy_bar_x_offset = (self.HUD_width / (3) * 2) - self.xp_barwidth * 1.25
+        self.hunger_bar_x_offset = (self.HUD_width / (3) * 3) - self.xp_barwidth * 1.25
+        self.status_text_y_offset = self.xp_bar_y_offset - 16
+        self.happiness_color = pygame.Color('#33FF41')
+        self.hunger_color = pygame.Color('#33FF41')
+        self.default_HUD_background = pygame.image.load('assets/HUD/HUD.png').convert_alpha()
+
     def hud_update(self, display, object):
         """draw and blit all objects necessary to create the HUD""" 
-        display.blit(self.HUD_background, (0,0)) 
+        display.blit(self.default_HUD_background, (0,0)) 
 
         # Level section of HUD
         self.xp_levelwidth = object.experience * self.xp_barwidth / object.xp_max
@@ -64,3 +74,16 @@ class Hud():
         self.hunger_level = pygame.draw.rect(display, self.hunger_color, (self.hunger_bar_x_offset,self.xp_bar_y_offset,self.hunger_levelwidth,10))
         self.hunger_text = self.draw_text(display, "Hunger", 10 , self.hunger_bar_x_offset, self.status_text_y_offset, "left")
         self.name_text = self.draw_text(display, object.name, 10, self.xp_bar_x_offset, self.status_text_y_offset - 15, "left")
+
+
+class WaterHud(Hud):
+    def __init__(self):
+        Hud.__init__(self)
+        self.magicarp_icon = pygame.image.load('test magicarp.png').convert_alpha()
+        
+
+
+    def hud_update(self, display, current_score):
+        display.blit(self.blank_HUD_background, (0,0))
+        display.blit(self.magicarp_icon, (10, 10))
+        self.draw_text(display, str(current_score), 12, 35, 20,  "left")
