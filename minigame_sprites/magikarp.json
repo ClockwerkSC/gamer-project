@@ -1,0 +1,256 @@
+{ "frames": {
+   "magikarp_0_emerge": {
+    "frame": { "x": 256, "y": 17, "w": 6, "h": 1 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 682, "y": 453, "w": 6, "h": 1 },
+    "sourceSize": { "w": 1600, "h": 960 },
+    "duration": 100
+   },
+   "magikarp_1_emerge": {
+    "frame": { "x": 252, "y": 30, "w": 10, "h": 5 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 680, "y": 449, "w": 10, "h": 5 },
+    "sourceSize": { "w": 1600, "h": 960 },
+    "duration": 100
+   },
+   "magikarp_2_emerge": {
+    "frame": { "x": 240, "y": 30, "w": 12, "h": 9 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 679, "y": 445, "w": 12, "h": 9 },
+    "sourceSize": { "w": 1600, "h": 960 },
+    "duration": 100
+   },
+   "magikarp_3_emerge": {
+    "frame": { "x": 240, "y": 17, "w": 16, "h": 13 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 677, "y": 441, "w": 16, "h": 13 },
+    "sourceSize": { "w": 1600, "h": 960 },
+    "duration": 100
+   },
+   "magikarp_4_emerge": {
+    "frame": { "x": 240, "y": 17, "w": 16, "h": 13 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 677, "y": 441, "w": 16, "h": 13 },
+    "sourceSize": { "w": 1600, "h": 960 },
+    "duration": 100
+   },
+   "magikarp_5_emerge": {
+    "frame": { "x": 240, "y": 0, "w": 22, "h": 17 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 674, "y": 437, "w": 22, "h": 17 },
+    "sourceSize": { "w": 1600, "h": 960 },
+    "duration": 100
+   },
+   "magikarp_6_emerge": {
+    "frame": { "x": 156, "y": 144, "w": 40, "h": 25 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 665, "y": 429, "w": 40, "h": 25 },
+    "sourceSize": { "w": 1600, "h": 960 },
+    "duration": 100
+   },
+   "magikarp_7_emerge": {
+    "frame": { "x": 110, "y": 144, "w": 46, "h": 30 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 662, "y": 424, "w": 46, "h": 30 },
+    "sourceSize": { "w": 1600, "h": 960 },
+    "duration": 100
+   },
+   "magikarp_8_emerge": {
+    "frame": { "x": 60, "y": 106, "w": 50, "h": 34 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 660, "y": 420, "w": 50, "h": 34 },
+    "sourceSize": { "w": 1600, "h": 960 },
+    "duration": 100
+   },
+   "magikarp_9_emerge": {
+    "frame": { "x": 0, "y": 106, "w": 60, "h": 38 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 655, "y": 416, "w": 60, "h": 38 },
+    "sourceSize": { "w": 1600, "h": 960 },
+    "duration": 100
+   },
+   "magikarp_10_emerge": {
+    "frame": { "x": 116, "y": 56, "w": 64, "h": 42 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 653, "y": 412, "w": 64, "h": 42 },
+    "sourceSize": { "w": 1600, "h": 960 },
+    "duration": 100
+   },
+   "magikarp_11_emerge": {
+    "frame": { "x": 116, "y": 98, "w": 58, "h": 46 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 656, "y": 408, "w": 58, "h": 46 },
+    "sourceSize": { "w": 1600, "h": 960 },
+    "duration": 100
+   },
+   "magikarp_12_emerge": {
+    "frame": { "x": 58, "y": 56, "w": 58, "h": 50 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 656, "y": 404, "w": 58, "h": 50 },
+    "sourceSize": { "w": 1600, "h": 960 },
+    "duration": 100
+   },
+   "magikarp_13_emerge": {
+    "frame": { "x": 66, "y": 0, "w": 58, "h": 56 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 656, "y": 398, "w": 58, "h": 56 },
+    "sourceSize": { "w": 1600, "h": 960 },
+    "duration": 100
+   },
+   "magikarp_14_death": {
+    "frame": { "x": 124, "y": 0, "w": 58, "h": 56 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 656, "y": 398, "w": 58, "h": 56 },
+    "sourceSize": { "w": 1600, "h": 960 },
+    "duration": 100
+   },
+   "magikarp_15_death": {
+    "frame": { "x": 0, "y": 0, "w": 66, "h": 50 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 652, "y": 404, "w": 66, "h": 50 },
+    "sourceSize": { "w": 1600, "h": 960 },
+    "duration": 100
+   },
+   "magikarp_16_death": {
+    "frame": { "x": 174, "y": 98, "w": 58, "h": 46 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 656, "y": 408, "w": 58, "h": 46 },
+    "sourceSize": { "w": 1600, "h": 960 },
+    "duration": 100
+   },
+   "magikarp_17_death": {
+    "frame": { "x": 180, "y": 56, "w": 64, "h": 42 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 653, "y": 412, "w": 64, "h": 42 },
+    "sourceSize": { "w": 1600, "h": 960 },
+    "duration": 100
+   },
+   "magikarp_18_death": {
+    "frame": { "x": 0, "y": 144, "w": 60, "h": 38 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 655, "y": 416, "w": 60, "h": 38 },
+    "sourceSize": { "w": 1600, "h": 960 },
+    "duration": 100
+   },
+   "magikarp_19_death": {
+    "frame": { "x": 60, "y": 140, "w": 50, "h": 34 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 660, "y": 420, "w": 50, "h": 34 },
+    "sourceSize": { "w": 1600, "h": 960 },
+    "duration": 100
+   },
+   "magikarp_20_death": {
+    "frame": { "x": 110, "y": 144, "w": 46, "h": 30 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 662, "y": 424, "w": 46, "h": 30 },
+    "sourceSize": { "w": 1600, "h": 960 },
+    "duration": 100
+   },
+   "magikarp_21_death": {
+    "frame": { "x": 156, "y": 144, "w": 40, "h": 25 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 665, "y": 429, "w": 40, "h": 25 },
+    "sourceSize": { "w": 1600, "h": 960 },
+    "duration": 100
+   },
+   "magikarp_22_death": {
+    "frame": { "x": 240, "y": 0, "w": 22, "h": 17 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 674, "y": 437, "w": 22, "h": 17 },
+    "sourceSize": { "w": 1600, "h": 960 },
+    "duration": 100
+   },
+   "magikarp_23_death": {
+    "frame": { "x": 240, "y": 17, "w": 16, "h": 13 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 677, "y": 441, "w": 16, "h": 13 },
+    "sourceSize": { "w": 1600, "h": 960 },
+    "duration": 100
+   },
+   "magikarp_24_death": {
+    "frame": { "x": 240, "y": 17, "w": 16, "h": 13 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 677, "y": 441, "w": 16, "h": 13 },
+    "sourceSize": { "w": 1600, "h": 960 },
+    "duration": 100
+   },
+   "magikarp_25_death": {
+    "frame": { "x": 240, "y": 30, "w": 12, "h": 9 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 679, "y": 445, "w": 12, "h": 9 },
+    "sourceSize": { "w": 1600, "h": 960 },
+    "duration": 100
+   },
+   "magikarp_26_death": {
+    "frame": { "x": 252, "y": 30, "w": 10, "h": 5 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 680, "y": 449, "w": 10, "h": 5 },
+    "sourceSize": { "w": 1600, "h": 960 },
+    "duration": 100
+   },
+   "magikarp_27_death": {
+    "frame": { "x": 256, "y": 17, "w": 6, "h": 1 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 682, "y": 453, "w": 6, "h": 1 },
+    "sourceSize": { "w": 1600, "h": 960 },
+    "duration": 100
+   },
+   "magikarp_28_swim": {
+    "frame": { "x": 182, "y": 0, "w": 58, "h": 56 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 655, "y": 398, "w": 58, "h": 56 },
+    "sourceSize": { "w": 1600, "h": 960 },
+    "duration": 250
+   },
+   "magikarp_29_swim": {
+    "frame": { "x": 0, "y": 50, "w": 58, "h": 56 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 657, "y": 398, "w": 58, "h": 56 },
+    "sourceSize": { "w": 1600, "h": 960 },
+    "duration": 250
+   }
+ },
+ "meta": {
+  "app": "http://www.aseprite.org/",
+  "version": "1.2.25-dev",
+  "image": "magikarp.png",
+  "format": "I8",
+  "size": { "w": 262, "h": 182 },
+  "scale": "1",
+  "frameTags": [
+   { "name": "emerge", "from": 0, "to": 13, "direction": "forward" },
+   { "name": "death", "from": 14, "to": 27, "direction": "forward" },
+   { "name": "swim", "from": 28, "to": 29, "direction": "forward" }
+  ]
+ }
+}
