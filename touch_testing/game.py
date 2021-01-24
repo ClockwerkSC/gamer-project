@@ -4,6 +4,11 @@ from menu import *
 from hud import Hud
 from food import Food
 from touch import GameTouch
+import os.path
+
+filepath = os.path.dirname(__file__)
+background_path = os.path.join(current_path, 'backgrounds') 
+
 class Game():
 	def __init__(self):
 		pygame.init()
@@ -87,7 +92,7 @@ class Game():
 class Idle(Game):
 	def __init__(self):
 		Game.__init__(self)
-		self.house = pygame.image.load('backgrounds/living room.png')
+		self.house = pygame.image.load(os.path.join(background_path, 'living room.png'))
 	def run_game(self):
 		while self.running :
 			self.check_events()
@@ -156,7 +161,7 @@ class Idle(Game):
 class Eat(Game):
 	def __init__(self, food):
 		Game.__init__(self)
-		self.house = pygame.image.load('backgrounds/kitchen.png')
+		self.house = pygame.image.load(os.path.join(background_path, 'kitchen.png'))
 		self.current_food = Food(food)
 
 	def run_game(self):

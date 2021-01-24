@@ -3,7 +3,7 @@ import pygame
 
 class Food():
     def __init__(self, foodname):
-        self.foodfile = f'food/{foodname}'
+        self.foodfile = f'assets/food/{foodname}'
         food_spritesheet = Spritesheet(self.foodfile)
         self.food_frames = food_spritesheet.get_frames()
         self.last_updated_food_time = 0

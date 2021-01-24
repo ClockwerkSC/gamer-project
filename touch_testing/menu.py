@@ -1,10 +1,14 @@
 import pygame
 from hud import Hud
 from touch import MenuTouch
+import os
 
+current_path = os.path.dirname(__file__) 
+background_path = os.path.join(current_path, 'backgrounds') 
+  
 class Menu():
     def __init__(self):
-        self.menu_background = pygame.image.load('backgrounds/menu background.png').convert_alpha()
+        self.menu_background = pygame.image.load(os.path.join(background_path,'menu background.png')).convert_alpha()
         self.menu_running = True
         self.START_KEY, self.BACK_KEY, self.UP_KEY, self.DOWN_KEY= False, False, False, False
         self.curr_menu = 'main'
@@ -223,5 +227,4 @@ class EatMenu(Menu):
             self.main_menu_change = True
 
 
-
-           
+   
