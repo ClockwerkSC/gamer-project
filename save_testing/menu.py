@@ -1,8 +1,10 @@
 import pygame
 from hud import Hud
-from touch import MenuTouch
+from touch import FullTouch
+
 class Menu():
     def __init__(self):
+        self.DISPLAY_W, self.DISPLAY_H = 800, 480
         self.menu_background = pygame.image.load('../assets/backgrounds/menu background.png').convert_alpha()
         self.font_name = "../assets/fonts/Pokemon Classic.TTF"
         self.menu_running = True
@@ -15,12 +17,50 @@ class Menu():
         self.main_menu_change = False
         self.play_loop_change = False
         self.mini_water_loop_change = False
-        self.mouse_flag = False
-        self.touch_display = MenuTouch()
-
-    def check_events(self):
+        self.menu_touch = FullTouch()
+        self.fingers = {}
+        
+    def check_events(self, touchcontrol = False):
         """ Check for key presses and set appropriate flags"""
         for event in pygame.event.get():
+
+            if touchcontrol != False:
+                if event.type == pygame.FINGERDOWN:
+                    self.fingers[event.finger_id] = {'x': event.x * self.DISPLAY_W, 'y': event.y * self.DISPLAY_H, 'fresh_pressed': True}
+                
+                elif event.type == pygame.FINGERMOTION:
+                    if event.finger_id in self.fingers:
+                        self.fingers[event.finger_id].update({'x': event.x * self.DISPLAY_W, 'y': event.y * self.DISPLAY_H, 'fresh_pressed': False})
+
+                elif event.type == pygame.FINGERUP:
+                    if event.finger_id in self.fingers:
+                        del self.fingers[event.finger_id]
+
+                keys = pygame.key.get_pressed()
+                if self.fingers == {} and (keys[pygame.K_LEFT] == False and keys[pygame.K_RIGHT] == False and keys[pygame.K_UP] == False and keys[pygame.K_DOWN] == False):
+                    self.LEFT_KEY, self.RIGHT_KEY, self.UP_KEY, self.DOWN_KEY = False, False, False, False
+                else:
+                    for finger in list(self.fingers):
+                        touchcontrol.touch_input(self.fingers.get(finger))
+                        if touchcontrol.MENU_BUTTON:
+                            self.ESCAPE = True
+                            del self.fingers[finger]
+                        if touchcontrol.A:
+                            self.START_KEY = True
+                            self.SPACE = True
+                            del self.fingers[finger]
+                        if touchcontrol.B:
+                            self.BACK_KEY = True
+                            del self.fingers[finger]
+                        if touchcontrol.LEFT:
+                            self.LEFT_KEY = True
+                        if touchcontrol.RIGHT:
+                            self.RIGHT_KEY = True
+                        if touchcontrol.UP:
+                            self.UP_KEY = True
+                        if touchcontrol.DOWN:
+                            self.DOWN_KEY = True
+
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_ESCAPE:
                     self.menu_running = False
@@ -38,10 +78,8 @@ class Menu():
                 if event.key == pygame.K_UP:
                     self.UP_KEY = False
 
-            if event.type == pygame.FINGERDOWN:
-                
-                self.mouse_x, self.mouse_y = event.x, event.y 
-                self.mouse_flag = True
+    def reset_fingers(self):
+        self.fingers = {}
 
     def draw_text(self, display, text, size, x, y , mode):
         """Create text surface and blit onto another display surface.
@@ -62,10 +100,28 @@ class Menu():
     def reset_keys(self):
         self.UP_KEY, self.DOWN_KEY, self.START_KEY = False, False, False  
 
-    def reset_mouse(self):
-        self.mouse_flag = False
+    def move_cursor(self, display):
+        if self.DOWN_KEY:
+            self.i = self.i + 1
+            if self.i > len(self.icons) - 1 :
+                self.i = 0
+            self.current_key = self.icons[self.i]
+        if self.UP_KEY:
+            self.i = self.i-1
+            if self.i < 0:
+                self.i = len(self.icons) - 1
+            self.current_key = self.icons[self.i]
+        if self.START_KEY == True:
+            self.state = self.icons[self.i]
 
-    
+    def display_menu(self, display):
+        display.blit(self.menu_background, (650,0))
+        for icon in self.icons:
+            self.draw_text(display, icon, 10, *self.pos_dict[icon], "left")
+        self.menu_touch.touch_draw(display)
+        self.move_cursor(display)
+        self.check_input()
+        self.draw_cursor(display)    
 
 class MainMenu(Menu):
     def __init__(self):
@@ -78,10 +134,8 @@ class MainMenu(Menu):
         self.townx, self.towny = 660, 90
         self.choosepokex, self.choosepokey = 660, 110
         self.minix, self.miniy = 660, 130
-        #self.state = 'EAT'
         self.current_key = self.icons[0]
         self.i = 0
-
         self.pos_dict = {'EAT': (self.eatx, self.eaty),
             'PLAY': (self.playx, self.playy),
             'BATHROOM':(self.bathroomx, self.bathroomy),
@@ -90,29 +144,8 @@ class MainMenu(Menu):
             'CHOOSE POKE':(self.choosepokex, self.choosepokey),
             'MINI GAMES':(self.minix, self.miniy)}
 
-    def display_menu(self, display):
-        """Display main menu"""
-        display.blit(self.menu_background, (650,0))
-        for icon in self.icons:
-            self.draw_text(display, icon, 10, *self.pos_dict[icon], "left")
-            self.touch_display.touch_menuloop_draw(display)
-
-        if self.mouse_flag:
-            if self.touch_display.touch_menuloop_checkinput(self.mouse_x, self.mouse_y) == "a button pressed":
-                self.START_KEY = True
-            elif self.touch_display.touch_menuloop_checkinput(self.mouse_x, self.mouse_y) == "b button pressed":
-                self.BACK_KEY = True
-            elif self.touch_display.touch_menuloop_checkinput(self.mouse_x, self.mouse_y) == "up":
-                self.UP_KEY = True
-            elif self.touch_display.touch_menuloop_checkinput(self.mouse_x, self.mouse_y) == "down":
-                self.DOWN_KEY = True
-        self.move_cursor(display)
-        self.check_input()
-        self.draw_cursor(display)    
-
     def check_input(self):
         if self.START_KEY:
-            
             if self.state == 'EAT':
                 self.curr_menu = "eat menu"
                 self.eat_menu_change = True
@@ -122,72 +155,17 @@ class MainMenu(Menu):
                 self.mini_menu_change = True
         if self.BACK_KEY:
             self.menu_running = False
-
-    def move_cursor(self, display):
-        
-        if self.DOWN_KEY:
-            self.i = self.i + 1
-            if self.i > 6:
-                self.i = 0
-            self.current_key = self.icons[self.i]
-        self.DOWN_KEY = False
-        if self.UP_KEY:
-            self.i = self.i-1
-            if self.i < 0:
-                self.i = 6
-            self.current_key = self.icons[self.i]
-        if self.START_KEY == True:
-            self.state = self.icons[self.i]
-
+    
 class EatMenu(Menu):
     def __init__(self):
         Menu.__init__(self)
-        
         self.icons = ['SNACK', 'MEAL']
-        #self.state = 'SNACK'
         self.current_key = self.icons[0]
         self.i = 0
         self.snackx, self.snacky = 660, 10
         self.mealx, self.mealy = 660, 30
-
         self.pos_dict = {'SNACK': (self.snackx, self.snacky),
             'MEAL': (self.mealx, self.mealy)}
-
-
-    def display_menu(self, display):
-        """Display main menu"""
-        display.blit(self.menu_background, (650,0))
-        for icon in self.icons:
-            self.draw_text(display, icon, 10, *self.pos_dict[icon], "left")
-        self.touch_display.touch_menuloop_draw(display)
-        if self.mouse_flag:
-            if self.touch_display.touch_menuloop_checkinput(self.mouse_x, self.mouse_y) == "a button pressed":
-                self.START_KEY = True
-            elif self.touch_display.touch_menuloop_checkinput(self.mouse_x, self.mouse_y) == "b button pressed":
-                self.BACK_KEY = True
-            elif self.touch_display.touch_menuloop_checkinput(self.mouse_x, self.mouse_y) == "up":
-                self.UP_KEY = True
-            elif self.touch_display.touch_menuloop_checkinput(self.mouse_x, self.mouse_y) == "down":
-                self.DOWN_KEY = True
-        self.move_cursor(display)
-        self.check_input()
-        self.draw_cursor(display)
-
-    def move_cursor(self, display):
-        
-        if self.DOWN_KEY:
-            self.i = self.i + 1
-            if self.i > 1:
-                self.i = 0
-            self.current_key = self.icons[self.i]
-        self.DOWN_KEY = False
-        if self.UP_KEY:
-            self.i = self.i-1
-            if self.i < 0:
-                self.i = 1
-            self.current_key = self.icons[self.i]
-        if self.START_KEY == True:
-            self.state = self.icons[self.i]
 
     def check_input(self):
         if self.START_KEY:
@@ -202,61 +180,22 @@ class EatMenu(Menu):
 class MiniMenu(Menu):
     def __init__(self):
         Menu.__init__(self)
-        
         self.icons = ['WATER', 'FIRE']
-        #self.state = 'SNACK'
         self.current_key = self.icons[0]
         self.i = 0
         self.waterx, self.watery = 660, 10
         self.firex, self.firey = 660, 30
-
         self.pos_dict = {'WATER': (self.waterx, self.watery),
             'FIRE': (self.firex, self.firey)}
-
-    def display_menu(self, display):
-        """Display main menu"""
-        display.blit(self.menu_background, (650,0))
-        for icon in self.icons:
-            self.draw_text(display, icon, 10, *self.pos_dict[icon], "left")
-        self.touch_display.touch_menuloop_draw(display)
-        if self.mouse_flag:
-            if self.touch_display.touch_menuloop_checkinput(self.mouse_x, self.mouse_y) == "a button pressed":
-                self.START_KEY = True
-            elif self.touch_display.touch_menuloop_checkinput(self.mouse_x, self.mouse_y) == "b button pressed":
-                self.BACK_KEY = True
-            elif self.touch_display.touch_menuloop_checkinput(self.mouse_x, self.mouse_y) == "up":
-                self.UP_KEY = True
-            elif self.touch_display.touch_menuloop_checkinput(self.mouse_x, self.mouse_y) == "down":
-                self.DOWN_KEY = True
-        self.move_cursor(display)
-        self.check_input()
-        self.draw_cursor(display)
 
     def check_input(self):
         if self.START_KEY:
             if self.state == 'WATER':
                 self.mini_water_loop_change = True
-                # self.snack_loop_change = True
             elif self.state == 'Fire':
                 self.meal_loop_change = True
         if self.BACK_KEY:
             self.main_menu_change = True
-    
-    def move_cursor(self, display):
-        
-        if self.DOWN_KEY:
-            self.i = self.i + 1
-            if self.i > 1:
-                self.i = 0
-            self.current_key = self.icons[self.i]
-        self.DOWN_KEY = False
-        if self.UP_KEY:
-            self.i = self.i-1
-            if self.i < 0:
-                self.i = 1
-            self.current_key = self.icons[self.i]
-        if self.START_KEY == True:
-            self.state = self.icons[self.i]
 
 class PostWaterMenu(Menu):
     def __init__(self):
@@ -266,52 +205,15 @@ class PostWaterMenu(Menu):
         self.i = 0
         self.playagainx, self.playagainy = 660, 10
         self.exitx, self.exity = 660, 30
-
         self.pos_dict = {'PLAY AGAIN?': (self.playagainx, self.playagainy),
             'EXIT': (self.exitx, self.exity)}
-
-    def move_cursor(self, display):
-        
-        if self.DOWN_KEY:
-            self.i = self.i + 1
-            if self.i > 1:
-                self.i = 0
-            self.current_key = self.icons[self.i]
-        self.DOWN_KEY = False
-        if self.UP_KEY:
-            self.i = self.i-1
-            if self.i < 0:
-                self.i = 1
-            self.current_key = self.icons[self.i]
-        if self.START_KEY == True:
-            self.state = self.icons[self.i]
-
 
     def check_input(self):
         if self.START_KEY:
             if self.state == 'PLAY AGAIN?':
                 self.mini_water_loop_change = True
-                # self.snack_loop_change = True
             elif self.state == 'EXIT':
                 self.play_loop_change = True
         
-    def display_menu(self, display):
-        """Display main menu"""
-        display.blit(self.menu_background, (650,0))
-        for icon in self.icons:
-            self.draw_text(display, icon, 10, *self.pos_dict[icon], "left")
-        self.touch_display.touch_menuloop_draw(display)
-        if self.mouse_flag:
-            if self.touch_display.touch_menuloop_checkinput(self.mouse_x, self.mouse_y) == "a button pressed":
-                self.START_KEY = True
-            elif self.touch_display.touch_menuloop_checkinput(self.mouse_x, self.mouse_y) == "b button pressed":
-                self.BACK_KEY = True
-            elif self.touch_display.touch_menuloop_checkinput(self.mouse_x, self.mouse_y) == "up":
-                self.UP_KEY = True
-            elif self.touch_display.touch_menuloop_checkinput(self.mouse_x, self.mouse_y) == "down":
-                self.DOWN_KEY = True
-        self.move_cursor(display)
-        self.check_input()
-        self.draw_cursor(display)
 
     

@@ -6,6 +6,7 @@ class Hud():
          #Setting geometries for the HUD
         self.HUD_width = 450
         self.blank_HUD_background = pygame.image.load('../assets/HUD/blank hud background.png').convert_alpha()
+        self.screen_width, self.screen_height = 800, 480
 
         
         
@@ -80,6 +81,9 @@ class WaterHud(Hud):
     def __init__(self):
         Hud.__init__(self)
         self.magicarp_icon = pygame.image.load('test magicarp.png').convert_alpha()
+        self.lose_screen_background = pygame.image.load('../assets/backgrounds/water mini end background.png').convert_alpha()
+        self.lose_screen_rect = self.lose_screen_background.get_rect()
+        self.lose_screen_rect.topleft = ((self.screen_width - self.lose_screen_rect.width)/2, (self.screen_height - self.lose_screen_rect.height)/2 )
         
 
 
@@ -87,3 +91,10 @@ class WaterHud(Hud):
         display.blit(self.blank_HUD_background, (0,0))
         display.blit(self.magicarp_icon, (10, 10))
         self.draw_text(display, str(current_score), 12, 35, 20,  "left")
+
+    def lose_screen(self, display, score, highscore):
+        display.blit(self.lose_screen_background, self.lose_screen_rect)
+        game_over_text = self.draw_text(display, "GAME OVER!", 20, self.lose_screen_rect.centerx, self.lose_screen_rect.y + 20, "center")
+        your_score_text = self.draw_text(display, f"YOUR SCORE: {score}", 12, self.lose_screen_rect.x + 10, self.lose_screen_rect.y + 80, "left")
+        high_score_text = self.draw_text(display, f"HIGH SCORE: {highscore}", 12, self.lose_screen_rect.x + 10, self.lose_screen_rect.y + 120, "left")
+        coins_earned_text = self.draw_text(display, "COINS EARNED:", 12, self.lose_screen_rect.x + 10, self.lose_screen_rect.bottom - 40, "left")

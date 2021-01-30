@@ -40,7 +40,7 @@ class Magicarp():
         else:
             dist = math.hypot(dx, dy)
 
-        if dist < 1:
+        if dist < 2:
             self.smacked = True    
         else:
             dx, dy = dx / dist, dy / dist  # Normalize.
