@@ -2,7 +2,7 @@ import pygame
 
 class Hud():
     def __init__(self):
-        self.font_name = "../assets/fonts/Pokemon Classic.TTF"
+        self.font_name = "../assets/fonts/Pokemon Classic.ttf"
          #Setting geometries for the HUD
         self.HUD_width = 450
         self.blank_HUD_background = pygame.image.load('../assets/HUD/blank hud background.png').convert_alpha()

@@ -6,7 +6,7 @@ class Menu():
     def __init__(self):
         self.DISPLAY_W, self.DISPLAY_H = 800, 480
         self.menu_background = pygame.image.load('../assets/backgrounds/menu background.png').convert_alpha()
-        self.font_name = "../assets/fonts/Pokemon Classic.TTF"
+        self.font_name = "../assets/fonts/Pokemon Classic.ttf"
         self.menu_running = True
         self.START_KEY, self.BACK_KEY, self.UP_KEY, self.DOWN_KEY = False, False, False, False
         self.curr_menu = 'main'
