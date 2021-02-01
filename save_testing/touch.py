@@ -41,7 +41,7 @@ class FullTouch(Touch):
 
         self.a_button_x_offset, self.a_button_y_offset = 700, 365
         self.b_button_x_offset, self.b_button_y_offset = 550, 385
-        self.dpad_x_offset, self.dpad_y_offset = 15, 300
+        self.dpad_x_offset, self.dpad_y_offset = 40, 300
 
         self.a_button_rect = self.a_button.get_rect()
         self.a_button_rect.x, self.a_button_rect.y = self.a_button_x_offset, self.a_button_y_offset
