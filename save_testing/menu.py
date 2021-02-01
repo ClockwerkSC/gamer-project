@@ -17,6 +17,7 @@ class Menu():
         self.main_menu_change = False
         self.play_loop_change = False
         self.mini_water_loop_change = False
+        self.save_and_quit = False
         self.menu_touch = FullTouch()
         self.fingers = {}
         
@@ -126,7 +127,7 @@ class Menu():
 class MainMenu(Menu):
     def __init__(self):
         Menu.__init__(self)
-        self.icons = ['EAT', 'PLAY', 'BATHROOM', 'WARDROBE', 'TOWN', 'CHOOSE POKE', 'MINI GAMES']
+        self.icons = ['EAT', 'PLAY', 'BATHROOM', 'WARDROBE', 'TOWN', 'CHOOSE POKE', 'MINI GAMES', 'SAVE AND QUIT']
         self.eatx, self.eaty = 660, 10
         self.playx, self.playy = 660, 30
         self.bathroomx, self.bathroomy = 660, 50
@@ -134,6 +135,7 @@ class MainMenu(Menu):
         self.townx, self.towny = 660, 90
         self.choosepokex, self.choosepokey = 660, 110
         self.minix, self.miniy = 660, 130
+        self.savequitx, self.savequity = 660, 150
         self.current_key = self.icons[0]
         self.i = 0
         self.pos_dict = {'EAT': (self.eatx, self.eaty),
@@ -142,7 +144,8 @@ class MainMenu(Menu):
             'WARDROBE':(self.wardrobex, self.wardrobey),
             'TOWN':(self.townx, self.towny),
             'CHOOSE POKE':(self.choosepokex, self.choosepokey),
-            'MINI GAMES':(self.minix, self.miniy)}
+            'MINI GAMES':(self.minix, self.miniy),
+            'SAVE AND QUIT':(self.savequitx, self.savequity)}
 
     def check_input(self):
         if self.START_KEY:
@@ -153,6 +156,8 @@ class MainMenu(Menu):
                 self.play_loop_change = True
             elif self.state == 'MINI GAMES':
                 self.mini_menu_change = True
+            elif self.state == 'SAVE AND QUIT':
+                self.save_and_quit = True
         if self.BACK_KEY:
             self.menu_running = False
     

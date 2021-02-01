@@ -8,13 +8,16 @@ from minigames.watergame.watercharacter import WaterCharacter
 from minigames.watergame.magicarp import Magicarp
 import random
 import math
+import os
 class Game():
 	def __init__(self):
 		pygame.init()
 		self.DISPLAY_W, self.DISPLAY_H = 800, 480
 		self.UP_KEY, self.DOWN_KEY, self.START_KEY, self.BACK_KEY, self.LEFT_KEY, self.RIGHT_KEY, self.SPACE, self.Q, self.Z, self.BACK_KEY, self.E, self.ESCAPE = False, False, False, False, False, False, False, False, False, False, False, False 
 		self.canvas = pygame.Surface((self.DISPLAY_W, self.DISPLAY_H))
-		self.window = pygame.display.set_mode(((self.DISPLAY_W,self.DISPLAY_H)))
+		os.environ['SDL_VIDEO_CENTERED'] = '1'
+		pygame.mouse.set_visible(False)
+		self.window = pygame.display.set_mode((self.DISPLAY_W,self.DISPLAY_H), 32, pygame.NOFRAME)
 		self.running = True
 		self.clock = pygame.time.Clock()
 		self.main_menu = MainMenu()
@@ -167,6 +170,10 @@ class Game():
 						self.mini_water_flag = True
 						self.curr_menu.mini_water_loop_change = False
 						self.idle_running = False
+					if self.curr_menu.save_and_quit:
+						self.curr_menu.menu_running = False
+						self.idle_running = False
+						self.running = False
 					
 					self.curr_menu.check_events(self.curr_menu.menu_touch)	
 					self.curr_menu.display_menu(self.canvas)
@@ -224,6 +231,10 @@ class Game():
 						self.eating_running = False
 						self.mini_water_flag = True
 						self.curr_menu.mini_water_loop_change = False
+					if self.curr_menu.save_and_quit:
+						self.curr_menu.menu_running = False
+						self.eating_running = False
+						self.running = False
 					self.curr_menu.check_events(self.curr_menu.menu_touch)
 					self.curr_menu.display_menu(self.canvas)
 					self.window.blit(self.canvas, (0,0))
