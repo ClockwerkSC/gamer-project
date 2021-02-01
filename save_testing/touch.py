@@ -31,17 +31,17 @@ class FullTouch(Touch):
     def __init__(self):
         Touch.__init__(self)
         self.a_button =  pygame.image.load('../assets/touch_buttons/A button.png').convert_alpha()
-        self.a_button =  pygame.transform.scale(self.a_button, (int(self.a_button.get_size()[0]*.65), int(self.a_button.get_size()[0]*.65)))
+        # self.a_button =  pygame.transform.scale(self.a_button, (int(self.a_button.get_size()[0]*.65), int(self.a_button.get_size()[0]*.65)))
 
         self.b_button =  pygame.image.load('../assets/touch_buttons/B button.png').convert_alpha()
-        self.b_button =  pygame.transform.scale(self.b_button, (int(self.b_button.get_size()[0]*.65), int(self.b_button.get_size()[0]*.65)))
+        # self.b_button =  pygame.transform.scale(self.b_button, (int(self.b_button.get_size()[0]*.65), int(self.b_button.get_size()[0]*.65)))
 
         self.dpad = pygame.image.load('../assets/touch_buttons/dpad.png').convert_alpha()
-        self.dpad =  pygame.transform.scale(self.dpad, (int(self.dpad.get_size()[0]*.65), int(self.dpad.get_size()[0]*.65)))
+        # self.dpad =  pygame.transform.scale(self.dpad, (int(self.dpad.get_size()[0]*.65), int(self.dpad.get_size()[0]*.65)))
 
-        self.a_button_x_offset, self.a_button_y_offset = 725, 375
-        self.b_button_x_offset, self.b_button_y_offset = 640, 400
-        self.dpad_x_offset, self.dpad_y_offset = 15, 350
+        self.a_button_x_offset, self.a_button_y_offset = 700, 365
+        self.b_button_x_offset, self.b_button_y_offset = 550, 385
+        self.dpad_x_offset, self.dpad_y_offset = 15, 300
 
         self.a_button_rect = self.a_button.get_rect()
         self.a_button_rect.x, self.a_button_rect.y = self.a_button_x_offset, self.a_button_y_offset
